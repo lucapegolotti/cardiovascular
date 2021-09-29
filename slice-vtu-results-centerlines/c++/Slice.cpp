@@ -46,7 +46,7 @@ void Slice::AddPoint(double point[3])
 // Write
 //-------
 //
-void Slice::Write(ofstream& file)
+void Slice::Write(std::ofstream& file)
 {
   file << "area: " << this->area << std::endl;
   file << "centerline index: " << this->m_CenterlineIndex << std::endl;

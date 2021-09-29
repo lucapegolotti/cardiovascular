@@ -29,7 +29,7 @@ class Slice {
     void AddScalarData(double value);
     void AddVectorData(double values[3]);
     void AddPoint(double point[3]);
-    void Write(ofstream& file);
+    void Write(std::ofstream& file);
 
   private:
     int m_CellID; 
