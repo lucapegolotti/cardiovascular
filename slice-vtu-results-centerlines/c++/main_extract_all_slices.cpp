@@ -48,18 +48,5 @@ int main(int argc, char* argv[])
   centerlines->read_centerlines(cl_file_name);
   centerlines->mesh_ = mesh;
 
-  // Create graphics interface.
-  auto graphics = new Graphics();
-  graphics->mesh_ = mesh;
-  graphics->set_centerlines(centerlines);
-
-  // Add mesh and centerlines geometry to graphics.
-  mesh->graphics_ = graphics;
-  mesh->add_geometry();
-
-  centerlines->graphics_ = graphics;
-  centerlines->add_geometry();
-
-  graphics->start();
-  }
-
+  mesh->extract_all_slices(centerlines->polydata_, true, false);
+}

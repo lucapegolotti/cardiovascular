@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include <vector>
+#include <functional>
 
 #include <vtkDataSet.h>
 #include <vtkDoubleArray.h>
@@ -11,8 +12,8 @@
 
 class Graphics;
 
-#ifndef MESH_H 
-#define MESH_H 
+#ifndef MESH_H
+#define MESH_H
 
 class Mesh {
   public:
@@ -21,14 +22,18 @@ class Mesh {
 
     void add_geometry();
     void compute_plane_dist(double position[3], double normal[3]);
-    void extract_all_slices(vtkPolyData* centerlines);
+    void extract_all_slices(vtkPolyData* centerlines,
+                            bool compute_average_fields = false,
+                            bool update_graphics = true);
     void extract_slice(double pos[3], double inscribedRadius, double normal[3]);
     vtkPolyData* find_best_slice(double position[3], vtkPolyData* isosurface);
     void read_mesh(const std::string& fileName);
     void remove_data_arrays(const std::set<std::string>& slice_data_names);
-    vtkPolyData* trim_slice(vtkPolyData* slice, double position[3], double radius); 
+    vtkPolyData* trim_slice(vtkPolyData* slice, double position[3], double radius);
     void write_slice(vtkPolyData* slice, int id);
-
+    double integrate_on_slice(vtkPolyData* slice, vtkIdType numcells,
+                              double area_cells[],
+                              std::function<double(vtkIdType)> fun);
     Graphics* graphics_;
 
     std::string mesh_file_name_;
@@ -50,5 +55,3 @@ class Mesh {
 };
 
 #endif
-
-

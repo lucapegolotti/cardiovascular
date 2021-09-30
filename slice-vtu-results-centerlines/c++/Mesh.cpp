@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <math.h>
 
 //------
 // Mesh
@@ -26,7 +27,7 @@ Mesh::Mesh()
 {
   slice_scalar_name_ = "plane_dist";
 
-  trim_slice_using_incribed_sphere_ = true;
+  trim_slice_using_incribed_sphere_ = false; // true;
 }
 
 Mesh::~Mesh()
@@ -80,7 +81,7 @@ void Mesh::read_mesh(const std::string& file_name)
 }
 
 //--------------
-// add_geometry 
+// add_geometry
 //--------------
 // Add the mesh geometry for visualization.
 //
@@ -100,11 +101,35 @@ void Mesh::add_geometry()
 }
 
 //--------------------
+// integrate_on_slice
+//--------------------
+// Integrate function fun on a slice. Function fun must be evaluated at the index of
+// a slice point
+//
+double Mesh::integrate_on_slice(vtkPolyData* slice, vtkIdType numcells,
+                                double area_cells[],
+                                std::function<double(vtkIdType)> fun)
+{
+  double sum = 0;
+  for (int j = 0; j < numcells; j++)
+  {
+    vtkIdType cell_size;
+    const vtkIdType* cell_points;
+    slice->GetPolys()->GetCellAtId(j, cell_size, cell_points);
+    double cur_sum = 0;
+    for (int k = 0; k < cell_size; k++)
+      cur_sum  += fun(cell_points[k]);
+    sum += area_cells[j] * (cur_sum) / 3.;
+  }
+  return sum;
+}
+
+//--------------------
 // extract_all_slices
 //--------------------
 // Extract slices for all centerline points.
 //
-void Mesh::extract_all_slices(vtkPolyData* centerlines)
+void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fields, bool update_graphics)
 {
   std::cout << "[extract_all_slices] " << std::endl;
   std::cout << "[extract_all_slices] ========== Mesh::extract_all_slices ========== " << std::endl;
@@ -122,7 +147,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines)
 
   // Extract slices.
   //
-  for (int i = 0; i < num_points; i++) { 
+  for (int i = 0; i < num_points; i++) {
     double position[3];
     double normal[3];
     points->GetPoint(i, position);
@@ -141,7 +166,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines)
     auto slice = contour->GetOutput();
 
     // Trim the slice using the incribed sphere radius.
-    if (trim_slice_using_incribed_sphere_) { 
+    if (trim_slice_using_incribed_sphere_) {
       slice = trim_slice(slice, position, radius);
 
     // Find the slice geometry center closest to the selected point.
@@ -149,10 +174,90 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines)
       slice = find_best_slice(position, slice);
     }
 
-    auto geom = graphics_->create_geometry(slice);
-    geom->GetProperty()->SetColor(0.8, 0.0, 0.0);
-    geom->PickableOff();
-    graphics_->add_geometry(geom);
+    if (compute_average_fields) {
+      vtkIdType num_point_arrays = slice->GetPointData()->GetNumberOfArrays();
+      int num_points = slice->GetNumberOfPoints();
+      auto polys = slice->GetPolys();
+      int numcells = polys->GetNumberOfCells();
+      auto points = slice->GetPoints();
+      // to delete
+      // write_slice(slice, i);
+      double area_cells[numcells];
+      double area = 0;
+
+      for (int icell = 0; icell < numcells; icell++)
+      {
+        vtkIdType cell_size;
+        const vtkIdType* cell_points;
+        polys->GetCellAtId(icell, cell_size, cell_points);
+        double edge_sizes[cell_size];
+
+        // from now on, we assume that the elements are triangles (true for
+        // tetrahedral mesh)
+
+        double nodes[cell_size][3];
+        for (int j = 0; j < cell_size; j++)
+        {
+          double* points = slice->GetPoints()->GetPoint(cell_points[j]);
+          for (int k = 0; k < 3; k++)
+            nodes[j][k] = points[k];
+        }
+        for (int j = 0; j < cell_size; j++)
+        {
+          double diff[3];
+          for (int k = 0; k < 3; k++)
+            diff[k] = nodes[(j + 1) % 3][k] - nodes[j][k];
+
+          double sum = 0;
+          for (int k = 0; k < 3; k++)
+            sum += diff[k] * diff[k];
+          edge_sizes[j] = std::sqrt(sum);
+        }
+
+        double s = (edge_sizes[0] + edge_sizes[1] + edge_sizes[2]) / 2;
+        area_cells[icell] = std::sqrt(s * (s - edge_sizes[0]) *
+                                     (s - edge_sizes[1]) *
+                                     (s - edge_sizes[2]));
+        area += area_cells[icell];
+      }
+
+      for (int ipoint = 0; ipoint < num_point_arrays; ipoint++) {
+        int type = slice->GetPointData()->GetArray(ipoint)->GetDataType();
+        auto name = slice->GetPointData()->GetArrayName(ipoint);
+
+        if (std::strcmp(name,"velocity") == 0) {
+          double flux[num_points];
+
+          for (int j = 0; j < num_points; j++) {
+            double* vel = slice->GetPointData()->GetArray(ipoint)->GetTuple3(j);
+            double curflux = 0;
+            for (int k = 0; k < 3; k++) {
+              curflux += vel[k] * normal[k];
+            }
+            flux[j] = curflux;
+          }
+
+          double sum = integrate_on_slice(slice, numcells, area_cells,
+                                          [&](vtkIdType index) -> double {
+                                            return flux[index];
+                                          });
+        }
+
+        if (std::strcmp(name,"pressure") == 0) {
+          double sum = integrate_on_slice(slice, numcells, area_cells,
+                                          [&](vtkIdType index) -> double {
+                                            return slice->GetPointData()->GetArray(ipoint)->GetTuple1(index);
+                                          });
+        }
+      }
+    }
+
+    if (update_graphics) {
+      auto geom = graphics_->create_geometry(slice);
+      geom->GetProperty()->SetColor(0.8, 0.0, 0.0);
+      geom->PickableOff();
+      graphics_->add_geometry(geom);
+    }
   }
 
   auto end_time = std::chrono::steady_clock::now();
@@ -192,13 +297,13 @@ void Mesh::remove_data_arrays(const std::set<std::string>& retain_data_names)
     }
   }
 
-  for (auto const& name : remove_data_names) { 
+  for (auto const& name : remove_data_names) {
     unstructured_mesh_->GetPointData()->RemoveArray(name.c_str());
   }
 }
 
 //--------------------
-// compute_plane_dist 
+// compute_plane_dist
 //--------------------
 // Compute the distance from each point in the mesh to a plane.
 //
@@ -264,10 +369,10 @@ void Mesh::extract_slice(double position[3], double inscribedRadius, double norm
   */
 
   // Trim the slice using the incribed sphere radius.
-  if (trim_slice_using_incribed_sphere_) { 
+  if (trim_slice_using_incribed_sphere_) {
     slice = trim_slice(slice, position, inscribedRadius);
 
-  // For multipled disjoint slice geometry find the geometry with 
+  // For multipled disjoint slice geometry find the geometry with
   // center closest to the selected point.
   } else {
     slice = find_best_slice(position, slice);
@@ -353,10 +458,10 @@ Mesh::trim_slice(vtkPolyData* slice, double position[3], double radius)
 //-----------------
 // find_best_slice
 //-----------------
-// For multipled disjoint slice geometry find the geometry with center 
+// For multipled disjoint slice geometry find the geometry with center
 // closest to the selected point.
 //
-vtkPolyData* 
+vtkPolyData*
 Mesh::find_best_slice(double position[3], vtkPolyData* slice)
 {
   auto conn_filter = vtkPolyDataConnectivityFilter::New();
@@ -368,12 +473,12 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
   double center[3] = {0.0, 0.0, 0.0};
   vtkPolyData* min_comp;
 
-  while (true) { 
+  while (true) {
     conn_filter->AddSpecifiedRegion(rid);
     conn_filter->Update();
     auto component = vtkPolyData::New();
     component->DeepCopy(conn_filter->GetOutput());
-    if (component->GetNumberOfCells() <= 0) { 
+    if (component->GetNumberOfCells() <= 0) {
       break;
     }
     conn_filter->DeleteSpecifiedRegion(rid);
