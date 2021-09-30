@@ -1,9 +1,9 @@
-
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
 #include <functional>
+#include <map>
 
 #include <vtkDataSet.h>
 #include <vtkDoubleArray.h>
@@ -30,7 +30,8 @@ class Mesh {
     void read_mesh(const std::string& fileName);
     void remove_data_arrays(const std::set<std::string>& slice_data_names);
     vtkPolyData* trim_slice(vtkPolyData* slice, double position[3], double radius);
-    void write_slice(vtkPolyData* slice, int id);
+    void write_vtp(vtkPolyData* slice, std::string filename);
+    void write_centerlines_and_fields(vtkPolyData* slice, std::string filename);
     double integrate_on_slice(vtkPolyData* slice, vtkIdType numcells,
                               double area_cells[],
                               std::function<double(vtkIdType)> fun);
@@ -52,6 +53,12 @@ class Mesh {
     vtkUnstructuredGrid* unstructured_mesh_;
 
     vtkDoubleArray* velocity_data_;
+
+    // avg pressures over each slice (key: name in the original vtu)
+    std::map<std::string,vtkDoubleArray*> avg_pressures_;
+
+    // flowrate over each slice (key: name in the original vtu)
+    std::map<std::string,vtkDoubleArray*> flowrates_;
 };
 
 #endif

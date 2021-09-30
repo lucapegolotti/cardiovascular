@@ -49,4 +49,5 @@ int main(int argc, char* argv[])
   centerlines->mesh_ = mesh;
 
   mesh->extract_all_slices(centerlines->polydata_, true, false);
+  mesh->write_centerlines_and_fields(centerlines->polydata_, "output_no_sphere.vtp");
 }

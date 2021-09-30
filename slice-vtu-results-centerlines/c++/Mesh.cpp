@@ -13,6 +13,7 @@
 #include <vtkSelectEnclosedPoints.h>
 #include <vtkSphere.h>
 #include <vtkXMLUnstructuredGridReader.h>
+#include <vtkPolyDataWriter.h>
 
 #include <iostream>
 #include <string>
@@ -27,7 +28,7 @@ Mesh::Mesh()
 {
   slice_scalar_name_ = "plane_dist";
 
-  trim_slice_using_incribed_sphere_ = false; // true;
+  trim_slice_using_incribed_sphere_ = false;
 }
 
 Mesh::~Mesh()
@@ -54,10 +55,6 @@ void Mesh::read_mesh(const std::string& file_name)
   // Remove data arrays we don't want to generate slice data for.
   std::set<std::string> retain_data_names = { "pressure", "velocity" };   // Data to not remove.
   remove_data_arrays(retain_data_names);
-
-  // Get some nodal data.
-  pressure_data_ = vtkDoubleArray::SafeDownCast(unstructured_mesh_->GetPointData()->GetArray("pressure"));
-  velocity_data_ = vtkDoubleArray::SafeDownCast(unstructured_mesh_->GetPointData()->GetArray("velocity"));
 
   // Convert the unstructured mesh to polydata for visualization.
   auto geometry_filter = vtkSmartPointer<vtkGeometryFilter>::New();
@@ -145,9 +142,14 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
   auto radius_data = vtkDoubleArray::SafeDownCast(centerlines->GetPointData()->GetArray("MaximumInscribedSphereRadius"));
   std::cout << "[extract_all_slices] Number of centerline points: " << num_points << std::endl;
 
+
+  if (compute_average_fields) {
+
+  }
   // Extract slices.
   //
   for (int i = 0; i < num_points; i++) {
+    std::cout << "i/num_points = " << i << "/" << num_points << std::endl << std::flush;
     double position[3];
     double normal[3];
     points->GetPoint(i, position);
@@ -180,8 +182,10 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
       auto polys = slice->GetPolys();
       int numcells = polys->GetNumberOfCells();
       auto points = slice->GetPoints();
-      // to delete
-      // write_slice(slice, i);
+      // std::stringstream file_name;
+      // file_name << "slice-1.vtp";
+      // write_vtp(slice, file_name.str());
+
       double area_cells[numcells];
       double area = 0;
 
@@ -223,9 +227,10 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
 
       for (int ipoint = 0; ipoint < num_point_arrays; ipoint++) {
         int type = slice->GetPointData()->GetArray(ipoint)->GetDataType();
-        auto name = slice->GetPointData()->GetArrayName(ipoint);
+        auto name = std::string(slice->GetPointData()->GetArrayName(ipoint));
+        int upos = name.find('_');
 
-        if (std::strcmp(name,"velocity") == 0) {
+        if (std::strcmp(name.substr(0, upos).c_str(),"velocity") == 0) {
           double flux[num_points];
 
           for (int j = 0; j < num_points; j++) {
@@ -237,17 +242,32 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
             flux[j] = curflux;
           }
 
-          double sum = integrate_on_slice(slice, numcells, area_cells,
+          double integral = integrate_on_slice(slice, numcells, area_cells,
                                           [&](vtkIdType index) -> double {
                                             return flux[index];
                                           });
+          if (flowrates_.find(name) == flowrates_.end()) {
+            flowrates_[name] = vtkDoubleArray::New();
+            flowrates_[name]->SetName("flowrate");
+            flowrates_[name]->SetNumberOfComponents(1);
+            flowrates_[name]->SetNumberOfTuples(num_points);
+          }
+          flowrates_[name]->SetValue(i, integral/area);
         }
 
-        if (std::strcmp(name,"pressure") == 0) {
-          double sum = integrate_on_slice(slice, numcells, area_cells,
+        if (std::strcmp(name.substr(0, upos).c_str(),"pressure") == 0) {
+          double integral = integrate_on_slice(slice, numcells, area_cells,
                                           [&](vtkIdType index) -> double {
                                             return slice->GetPointData()->GetArray(ipoint)->GetTuple1(index);
                                           });
+          if (avg_pressures_.find(name) == avg_pressures_.end()) {
+            avg_pressures_[name] = vtkDoubleArray::New();
+            avg_pressures_[name]->SetName("flowrate");
+            avg_pressures_[name]->SetNumberOfComponents(1);
+            avg_pressures_[name]->SetNumberOfTuples(num_points);
+          }
+          avg_pressures_[name]->SetValue(i, integral/area);
+          std::cout << "pressures = " << integral/area << std::endl << std::flush;
         }
       }
     }
@@ -287,11 +307,12 @@ void Mesh::remove_data_arrays(const std::set<std::string>& retain_data_names)
 
   for (int i = 0; i < num_point_arrays; i++) {
     int type = unstructured_mesh_->GetPointData()->GetArray(i)->GetDataType();
-    auto name = unstructured_mesh_->GetPointData()->GetArrayName(i);
+    auto name = std::string(unstructured_mesh_->GetPointData()->GetArrayName(i));
+    int upos = name.find('_');
     int num_comp = unstructured_mesh_->GetPointData()->GetNumberOfComponents();
-    if (retain_data_names.count(name) == 0) {
+    if (retain_data_names.count(name.substr(0, upos).c_str()) == 0) {
       std::cout << "[remove_data_arrays] --- Remove data array: " << name << std::endl;
-      remove_data_names.push_back(std::string(name));
+      remove_data_names.push_back(name);
     } else {
       std::cout << "[remove_data_arrays] +++ Retain data array: " << name << std::endl;
     }
@@ -379,7 +400,9 @@ void Mesh::extract_slice(double position[3], double inscribedRadius, double norm
   }
 
   // Write the slice to a .vtp file.
-  write_slice(slice, 1);
+  std::stringstream file_name;
+  file_name << "slice-1.vtp";
+  write_vtp(slice, file_name.str());
 
   // Show the trimmed slice.
   auto geom = graphics_->create_geometry(slice);
@@ -525,13 +548,21 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
 //-------------
 // Write a slice to a VTP file.
 //
-void Mesh::write_slice(vtkPolyData* slice, int id)
+void Mesh::write_vtp(vtkPolyData* slice, std::string filename)
 {
-  std::stringstream file_name;
-  file_name << "slice-" << id << ".vtp";
   vtkSmartPointer<vtkXMLPolyDataWriter> writer = vtkSmartPointer<vtkXMLPolyDataWriter>::New();
-  writer->SetFileName(file_name.str().c_str());
+  writer->SetFileName(filename.c_str());
   writer->SetInputData(slice);
   writer->Update();
   writer->Write();
+}
+
+void Mesh::write_centerlines_and_fields(vtkPolyData* centerlines, std::string filename)
+{
+  for (auto it = flowrates_.begin(); it != flowrates_.end(); it++)
+    centerlines->GetPointData()->AddArray(it->second);
+  for (auto it = avg_pressures_.begin(); it != avg_pressures_.end(); it++)
+    centerlines->GetPointData()->AddArray(it->second);
+
+  write_vtp(centerlines, filename);
 }
