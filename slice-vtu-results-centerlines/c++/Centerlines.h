@@ -26,11 +26,11 @@ class Centerlines {
     void create_cell_locator();
     void locate_cell(double point[3], int& index, int& cellId, double& radius, double normal[3]);
 
-    vtkPolyData* polydata_;
+    vtkSmartPointer<vtkPolyData> polydata_;
     Mesh* mesh_;
     vtkCellLocator* cell_locator_;
     Graphics* graphics_;
-    vtkPointSet* point_set_;
+    vtkSmartPointer<vtkPointSet> point_set_;
     vtkDoubleArray* normal_data_;
     vtkDoubleArray* radius_data_;
 };

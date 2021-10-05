@@ -44,7 +44,7 @@ void Mesh::read_mesh(const std::string& file_name)
 {
   mesh_file_name_ = file_name;
   std::cout << "[read_mesh] Read mesh: " << file_name << std::endl;
-  unstructured_mesh_ = vtkUnstructuredGrid::New();
+  unstructured_mesh_ = vtkSmartPointer<vtkUnstructuredGrid>::New();
 
   auto reader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
   reader->SetFileName(file_name.c_str());
@@ -60,12 +60,12 @@ void Mesh::read_mesh(const std::string& file_name)
   auto geometry_filter = vtkSmartPointer<vtkGeometryFilter>::New();
   geometry_filter->SetInputData(reader->GetOutput());
   geometry_filter->Update();
-  mesh_polydata_ = vtkPolyData::New();
+  mesh_polydata_ = vtkSmartPointer<vtkPolyData>::New();
   mesh_polydata_->DeepCopy(geometry_filter->GetOutput());
 
   // Add a point data array to store plane distance.
   int num_pts = unstructured_mesh_->GetNumberOfPoints();
-  plane_dist_ = vtkDoubleArray::New();
+  plane_dist_ = vtkSmartPointer<vtkDoubleArray>::New();
   plane_dist_->SetName(slice_scalar_name_);
   plane_dist_->SetNumberOfComponents(1);
   plane_dist_->SetNumberOfTuples(num_pts);
@@ -142,10 +142,6 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
   auto radius_data = vtkDoubleArray::SafeDownCast(centerlines->GetPointData()->GetArray("MaximumInscribedSphereRadius"));
   std::cout << "[extract_all_slices] Number of centerline points: " << num_points << std::endl;
 
-
-  if (compute_average_fields) {
-
-  }
   // Extract slices.
   //
   for (int i = 0; i < num_points; i++) {
@@ -247,7 +243,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
                                             return flux[index];
                                           });
           if (flowrates_.find(name) == flowrates_.end()) {
-            flowrates_[name] = vtkDoubleArray::New();
+            flowrates_[name] = vtkSmartPointer<vtkDoubleArray>::New();
             flowrates_[name]->SetName("flowrate");
             flowrates_[name]->SetNumberOfComponents(1);
             flowrates_[name]->SetNumberOfTuples(num_points);
@@ -261,15 +257,15 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
                                             return slice->GetPointData()->GetArray(ipoint)->GetTuple1(index);
                                           });
           if (avg_pressures_.find(name) == avg_pressures_.end()) {
-            avg_pressures_[name] = vtkDoubleArray::New();
+            avg_pressures_[name] = vtkSmartPointer<vtkDoubleArray>::New();
             avg_pressures_[name]->SetName("flowrate");
             avg_pressures_[name]->SetNumberOfComponents(1);
             avg_pressures_[name]->SetNumberOfTuples(num_points);
           }
           avg_pressures_[name]->SetValue(i, integral/area);
-          std::cout << "pressures = " << integral/area << std::endl << std::flush;
         }
       }
+      slice->Delete();
     }
 
     if (update_graphics) {
@@ -370,7 +366,7 @@ void Mesh::extract_slice(double position[3], double inscribedRadius, double norm
 
   // Extract isosurface.
   unstructured_mesh_->GetPointData()->SetActiveScalars(slice_scalar_name_);
-  auto contour = vtkContourGrid::New();
+  auto contour = vtkSmartPointer<vtkContourGrid>::New();
   contour->SetInputData(unstructured_mesh_);
   contour->SetValue(0, 0.0);
   contour->ComputeScalarsOn();
@@ -437,7 +433,7 @@ Mesh::trim_slice(vtkPolyData* slice, double position[3], double radius)
   center[2] /= num_points;
 
   // Creae a sphere implicit function.
-  auto sphere = vtkSphere::New();
+  auto sphere = vtkSmartPointer<vtkSphere>::New();
   sphere->SetCenter(position);
   sphere->SetRadius(radius);
 
@@ -446,7 +442,7 @@ Mesh::trim_slice(vtkPolyData* slice, double position[3], double radius)
   vtkPolyData* trimmed_slice;
 
   if (false) {
-    auto extract = vtkExtractGeometry::New();
+    auto extract = vtkSmartPointer<vtkExtractGeometry>::New();
     extract->SetInputData(slice);
     extract->SetImplicitFunction(sphere);
     extract->ExtractInsideOn();
@@ -458,20 +454,20 @@ Mesh::trim_slice(vtkPolyData* slice, double position[3], double radius)
     geometry_filter->SetInputData(extract_grid);
     geometry_filter->Update();
 
-    trimmed_slice = vtkPolyData::New();
+    trimmed_slice = vtkSmartPointer<vtkPolyData>::New();
     trimmed_slice->DeepCopy(geometry_filter->GetOutput());
 
   // Clip geometry to the sphere implicit function.
 
   } else {
 
-    auto clip = vtkClipPolyData::New();
+    auto clip = vtkSmartPointer<vtkClipPolyData>::New();
     clip->SetInputData(slice);
     clip->SetClipFunction(sphere);
     clip->InsideOutOn();
     clip->Update();
 
-    trimmed_slice = vtkPolyData::New();
+    trimmed_slice = vtkSmartPointer<vtkPolyData>::New();
     trimmed_slice->DeepCopy(clip->GetOutput());
   }
 
@@ -487,7 +483,7 @@ Mesh::trim_slice(vtkPolyData* slice, double position[3], double radius)
 vtkPolyData*
 Mesh::find_best_slice(double position[3], vtkPolyData* slice)
 {
-  auto conn_filter = vtkPolyDataConnectivityFilter::New();
+  auto conn_filter = vtkSmartPointer<vtkPolyDataConnectivityFilter>::New();
   conn_filter->SetInputData(slice);
   conn_filter->SetExtractionModeToSpecifiedRegions();
 
@@ -502,13 +498,15 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
     auto component = vtkPolyData::New();
     component->DeepCopy(conn_filter->GetOutput());
     if (component->GetNumberOfCells() <= 0) {
+      component->Delete();
       break;
     }
     conn_filter->DeleteSpecifiedRegion(rid);
 
-    auto clean_filter = vtkCleanPolyData::New();
+    auto clean_filter = vtkSmartPointer<vtkCleanPolyData>::New();
     clean_filter->SetInputData(component);
     clean_filter->Update();
+    component->Delete();
     component = clean_filter->GetOutput();
 
     auto comp_points = component->GetPoints();
@@ -535,7 +533,11 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
 
     if (d < min_d) {
       min_d = d;
+      min_comp->Delete();
       min_comp = component;
+    }
+    else {
+      component->Delete();
     }
     rid += 1;
   }

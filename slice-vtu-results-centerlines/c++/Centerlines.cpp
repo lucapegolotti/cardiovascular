@@ -37,7 +37,7 @@ void Centerlines::read_centerlines(const std::string& file_name)
   reader->SetFileName(file_name.c_str());
   reader->Update();
 
-  polydata_ = vtkPolyData::New();
+  polydata_ = vtkSmartPointer<vtkPolyData>::New();
   polydata_->DeepCopy(reader->GetOutput());
   std::cout << "[read_centerlines] Number of points: " << polydata_->GetNumberOfPoints() << std::endl;
 
@@ -101,7 +101,7 @@ void Centerlines::create_cell_locator()
   cell_locator_->BuildLocator();
   std::cout << "[create_cell_locator] cell_locator_ " << cell_locator_ << std::endl;
 
-  point_set_ = vtkPolyData::New();
+  point_set_ = vtkSmartPointer<vtkPolyData>::New();
   point_set_->SetPoints(polydata_->GetPoints());
 }
 

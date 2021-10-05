@@ -1,5 +1,6 @@
 #include <iostream>
 #include <set>
+#include <cstring>
 #include <string>
 #include <vector>
 #include <functional>
@@ -42,23 +43,19 @@ class Mesh {
     // The name of the scalar field used to slice the mesh.
     const char* slice_scalar_name_;
 
-    vtkDoubleArray* plane_dist_;
+    vtkSmartPointer<vtkDoubleArray> plane_dist_;
 
-    vtkPolyData* mesh_polydata_;
-
-    vtkDoubleArray* pressure_data_;
+    vtkSmartPointer<vtkPolyData> mesh_polydata_;
 
     bool trim_slice_using_incribed_sphere_;
 
-    vtkUnstructuredGrid* unstructured_mesh_;
-
-    vtkDoubleArray* velocity_data_;
+    vtkSmartPointer<vtkUnstructuredGrid> unstructured_mesh_;
 
     // avg pressures over each slice (key: name in the original vtu)
-    std::map<std::string,vtkDoubleArray*> avg_pressures_;
+    std::map<std::string,vtkSmartPointer<vtkDoubleArray>> avg_pressures_;
 
     // flowrate over each slice (key: name in the original vtu)
-    std::map<std::string,vtkDoubleArray*> flowrates_;
+    std::map<std::string,vtkSmartPointer<vtkDoubleArray>> flowrates_;
 };
 
 #endif
