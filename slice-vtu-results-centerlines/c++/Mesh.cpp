@@ -491,22 +491,20 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
   int rid = 0;
   double center[3] = {0.0, 0.0, 0.0};
   vtkPolyData* min_comp;
-
+  
   while (true) {
     conn_filter->AddSpecifiedRegion(rid);
     conn_filter->Update();
     auto component = vtkPolyData::New();
     component->DeepCopy(conn_filter->GetOutput());
     if (component->GetNumberOfCells() <= 0) {
-      component->Delete();
       break;
     }
     conn_filter->DeleteSpecifiedRegion(rid);
 
-    auto clean_filter = vtkSmartPointer<vtkCleanPolyData>::New();
+    auto clean_filter = vtkCleanPolyData::New();
     clean_filter->SetInputData(component);
     clean_filter->Update();
-    component->Delete();
     component = clean_filter->GetOutput();
 
     auto comp_points = component->GetPoints();
@@ -533,15 +531,74 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
 
     if (d < min_d) {
       min_d = d;
-      min_comp->Delete();
       min_comp = component;
-    }
-    else {
-      component->Delete();
     }
     rid += 1;
   }
+  /*
+  while (true) {
+    std::cout << "hi" << std::endl << std::flush;
+    conn_filter->AddSpecifiedRegion(rid);
+    conn_filter->Update();
+    std::cout << "mmm" << std::endl << std::flush;
+    auto component = vtkPolyData::New();
+    std::cout << ".hi" << std::endl << std::flush;
+    component->DeepCopy(conn_filter->GetOutput());
+    std::cout << "..hi" << std::endl << std::flush;
+    if (component->GetNumberOfCells() <= 0) {
+      break;
+    }
+    conn_filter->DeleteSpecifiedRegion(rid);
+    std::cout << "hi2" << std::endl << std::flush;
+    auto clean_filter = vtkSmartPointer<vtkCleanPolyData>::New();
+    clean_filter->SetInputData(component);
+    clean_filter->Update();
+    component = clean_filter->GetOutput();
+    std::cout << "hi3" << std::endl << std::flush;
 
+    auto comp_points = component->GetPoints();
+    int num_comp_points = component->GetNumberOfPoints();
+    int num_comp_cells = component->GetNumberOfCells();
+    std::cout << "h4" << std::endl << std::flush;
+
+    double cx = 0.0;
+    double cy = 0.0;
+    double cz = 0.0;
+    for (int i = 0; i < num_comp_points; i++) {
+      double pt[3];
+      comp_points->GetPoint(i, pt);
+      cx += pt[0];
+      cy += pt[1];
+      cz += pt[2];
+    }
+    std::cout << "hi5" << std::endl << std::flush;
+
+    center[0] = cx / num_comp_points;
+    center[1] = cy / num_comp_points;
+    center[2] = cz / num_comp_points;
+    double d = (center[0]-position[0])*(center[0]-position[0]) +
+               (center[1]-position[1])*(center[1]-position[1]) +
+               (center[2]-position[2])*(center[2]-position[2]);
+
+    if (d < min_d) {
+      if (min_d > 1e5)
+      {
+        std::cout << "3" << std::endl << std::flush;
+        // min_comp->Delete();
+        std::cout << "3." << std::endl << std::flush;
+      }
+      min_d = d;
+      min_comp = component;
+    }
+    else {
+      std::cout << "4" << std::endl << std::flush;
+      component->Delete();
+      std::cout << "4." << std::endl << std::flush;
+    }
+    std::cout << "hi6" << std::endl << std::flush;
+    rid += 1;
+  }
+  */
   return min_comp;
 }
 

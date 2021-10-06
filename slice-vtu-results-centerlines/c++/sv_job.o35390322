@@ -1,0 +1,965 @@
+File extension: vtu
+File prefix: /scratch/users/lpego/0111_0001_ini_1d_quad/48-procs_case/solutions/0111_000
+[read_mesh] Read mesh: /scratch/users/lpego/0111_0001_ini_1d_quad/48-procs_case/solutions/0111_0001.vtu
+[read_mesh] Number of elements: 1695899
+[remove_data_arrays] 
+[remove_data_arrays] ========== Mesh::remove_data_arrays ========== 
+[remove_data_arrays] Number of node data arrays: 843
+[remove_data_arrays] --- Remove data array: GlobalNodeID
+[remove_data_arrays] +++ Retain data array: pressure_00000
+[remove_data_arrays] +++ Retain data array: velocity_00000
+[remove_data_arrays] +++ Retain data array: pressure_00010
+[remove_data_arrays] +++ Retain data array: velocity_00010
+[remove_data_arrays] --- Remove data array: vinplane_traction_00010
+[remove_data_arrays] --- Remove data array: vWSS_00010
+[remove_data_arrays] --- Remove data array: timeDeriv_00010
+[remove_data_arrays] --- Remove data array: average_speed_00010
+[remove_data_arrays] --- Remove data array: average_pressure_00010
+[remove_data_arrays] +++ Retain data array: pressure_00020
+[remove_data_arrays] +++ Retain data array: velocity_00020
+[remove_data_arrays] --- Remove data array: vinplane_traction_00020
+[remove_data_arrays] --- Remove data array: vWSS_00020
+[remove_data_arrays] --- Remove data array: timeDeriv_00020
+[remove_data_arrays] --- Remove data array: average_speed_00020
+[remove_data_arrays] --- Remove data array: average_pressure_00020
+[remove_data_arrays] +++ Retain data array: pressure_00030
+[remove_data_arrays] +++ Retain data array: velocity_00030
+[remove_data_arrays] --- Remove data array: vinplane_traction_00030
+[remove_data_arrays] --- Remove data array: vWSS_00030
+[remove_data_arrays] --- Remove data array: timeDeriv_00030
+[remove_data_arrays] --- Remove data array: average_speed_00030
+[remove_data_arrays] --- Remove data array: average_pressure_00030
+[remove_data_arrays] +++ Retain data array: pressure_00040
+[remove_data_arrays] +++ Retain data array: velocity_00040
+[remove_data_arrays] --- Remove data array: vinplane_traction_00040
+[remove_data_arrays] --- Remove data array: vWSS_00040
+[remove_data_arrays] --- Remove data array: timeDeriv_00040
+[remove_data_arrays] --- Remove data array: average_speed_00040
+[remove_data_arrays] --- Remove data array: average_pressure_00040
+[remove_data_arrays] +++ Retain data array: pressure_00050
+[remove_data_arrays] +++ Retain data array: velocity_00050
+[remove_data_arrays] --- Remove data array: vinplane_traction_00050
+[remove_data_arrays] --- Remove data array: vWSS_00050
+[remove_data_arrays] --- Remove data array: timeDeriv_00050
+[remove_data_arrays] --- Remove data array: average_speed_00050
+[remove_data_arrays] --- Remove data array: average_pressure_00050
+[remove_data_arrays] +++ Retain data array: pressure_00060
+[remove_data_arrays] +++ Retain data array: velocity_00060
+[remove_data_arrays] --- Remove data array: vinplane_traction_00060
+[remove_data_arrays] --- Remove data array: vWSS_00060
+[remove_data_arrays] --- Remove data array: timeDeriv_00060
+[remove_data_arrays] --- Remove data array: average_speed_00060
+[remove_data_arrays] --- Remove data array: average_pressure_00060
+[remove_data_arrays] +++ Retain data array: pressure_00070
+[remove_data_arrays] +++ Retain data array: velocity_00070
+[remove_data_arrays] --- Remove data array: vinplane_traction_00070
+[remove_data_arrays] --- Remove data array: vWSS_00070
+[remove_data_arrays] --- Remove data array: timeDeriv_00070
+[remove_data_arrays] --- Remove data array: average_speed_00070
+[remove_data_arrays] --- Remove data array: average_pressure_00070
+[remove_data_arrays] +++ Retain data array: pressure_00080
+[remove_data_arrays] +++ Retain data array: velocity_00080
+[remove_data_arrays] --- Remove data array: vinplane_traction_00080
+[remove_data_arrays] --- Remove data array: vWSS_00080
+[remove_data_arrays] --- Remove data array: timeDeriv_00080
+[remove_data_arrays] --- Remove data array: average_speed_00080
+[remove_data_arrays] --- Remove data array: average_pressure_00080
+[remove_data_arrays] +++ Retain data array: pressure_00090
+[remove_data_arrays] +++ Retain data array: velocity_00090
+[remove_data_arrays] --- Remove data array: vinplane_traction_00090
+[remove_data_arrays] --- Remove data array: vWSS_00090
+[remove_data_arrays] --- Remove data array: timeDeriv_00090
+[remove_data_arrays] --- Remove data array: average_speed_00090
+[remove_data_arrays] --- Remove data array: average_pressure_00090
+[remove_data_arrays] +++ Retain data array: pressure_00100
+[remove_data_arrays] +++ Retain data array: velocity_00100
+[remove_data_arrays] --- Remove data array: vinplane_traction_00100
+[remove_data_arrays] --- Remove data array: vWSS_00100
+[remove_data_arrays] --- Remove data array: timeDeriv_00100
+[remove_data_arrays] --- Remove data array: average_speed_00100
+[remove_data_arrays] --- Remove data array: average_pressure_00100
+[remove_data_arrays] +++ Retain data array: pressure_00110
+[remove_data_arrays] +++ Retain data array: velocity_00110
+[remove_data_arrays] --- Remove data array: vinplane_traction_00110
+[remove_data_arrays] --- Remove data array: vWSS_00110
+[remove_data_arrays] --- Remove data array: timeDeriv_00110
+[remove_data_arrays] --- Remove data array: average_speed_00110
+[remove_data_arrays] --- Remove data array: average_pressure_00110
+[remove_data_arrays] +++ Retain data array: pressure_00120
+[remove_data_arrays] +++ Retain data array: velocity_00120
+[remove_data_arrays] --- Remove data array: vinplane_traction_00120
+[remove_data_arrays] --- Remove data array: vWSS_00120
+[remove_data_arrays] --- Remove data array: timeDeriv_00120
+[remove_data_arrays] --- Remove data array: average_speed_00120
+[remove_data_arrays] --- Remove data array: average_pressure_00120
+[remove_data_arrays] +++ Retain data array: pressure_00130
+[remove_data_arrays] +++ Retain data array: velocity_00130
+[remove_data_arrays] --- Remove data array: vinplane_traction_00130
+[remove_data_arrays] --- Remove data array: vWSS_00130
+[remove_data_arrays] --- Remove data array: timeDeriv_00130
+[remove_data_arrays] --- Remove data array: average_speed_00130
+[remove_data_arrays] --- Remove data array: average_pressure_00130
+[remove_data_arrays] +++ Retain data array: pressure_00140
+[remove_data_arrays] +++ Retain data array: velocity_00140
+[remove_data_arrays] --- Remove data array: vinplane_traction_00140
+[remove_data_arrays] --- Remove data array: vWSS_00140
+[remove_data_arrays] --- Remove data array: timeDeriv_00140
+[remove_data_arrays] --- Remove data array: average_speed_00140
+[remove_data_arrays] --- Remove data array: average_pressure_00140
+[remove_data_arrays] +++ Retain data array: pressure_00150
+[remove_data_arrays] +++ Retain data array: velocity_00150
+[remove_data_arrays] --- Remove data array: vinplane_traction_00150
+[remove_data_arrays] --- Remove data array: vWSS_00150
+[remove_data_arrays] --- Remove data array: timeDeriv_00150
+[remove_data_arrays] --- Remove data array: average_speed_00150
+[remove_data_arrays] --- Remove data array: average_pressure_00150
+[remove_data_arrays] +++ Retain data array: pressure_00160
+[remove_data_arrays] +++ Retain data array: velocity_00160
+[remove_data_arrays] --- Remove data array: vinplane_traction_00160
+[remove_data_arrays] --- Remove data array: vWSS_00160
+[remove_data_arrays] --- Remove data array: timeDeriv_00160
+[remove_data_arrays] --- Remove data array: average_speed_00160
+[remove_data_arrays] --- Remove data array: average_pressure_00160
+[remove_data_arrays] +++ Retain data array: pressure_00170
+[remove_data_arrays] +++ Retain data array: velocity_00170
+[remove_data_arrays] --- Remove data array: vinplane_traction_00170
+[remove_data_arrays] --- Remove data array: vWSS_00170
+[remove_data_arrays] --- Remove data array: timeDeriv_00170
+[remove_data_arrays] --- Remove data array: average_speed_00170
+[remove_data_arrays] --- Remove data array: average_pressure_00170
+[remove_data_arrays] +++ Retain data array: pressure_00180
+[remove_data_arrays] +++ Retain data array: velocity_00180
+[remove_data_arrays] --- Remove data array: vinplane_traction_00180
+[remove_data_arrays] --- Remove data array: vWSS_00180
+[remove_data_arrays] --- Remove data array: timeDeriv_00180
+[remove_data_arrays] --- Remove data array: average_speed_00180
+[remove_data_arrays] --- Remove data array: average_pressure_00180
+[remove_data_arrays] +++ Retain data array: pressure_00190
+[remove_data_arrays] +++ Retain data array: velocity_00190
+[remove_data_arrays] --- Remove data array: vinplane_traction_00190
+[remove_data_arrays] --- Remove data array: vWSS_00190
+[remove_data_arrays] --- Remove data array: timeDeriv_00190
+[remove_data_arrays] --- Remove data array: average_speed_00190
+[remove_data_arrays] --- Remove data array: average_pressure_00190
+[remove_data_arrays] +++ Retain data array: pressure_00200
+[remove_data_arrays] +++ Retain data array: velocity_00200
+[remove_data_arrays] --- Remove data array: vinplane_traction_00200
+[remove_data_arrays] --- Remove data array: vWSS_00200
+[remove_data_arrays] --- Remove data array: timeDeriv_00200
+[remove_data_arrays] --- Remove data array: average_speed_00200
+[remove_data_arrays] --- Remove data array: average_pressure_00200
+[remove_data_arrays] +++ Retain data array: pressure_00210
+[remove_data_arrays] +++ Retain data array: velocity_00210
+[remove_data_arrays] --- Remove data array: vinplane_traction_00210
+[remove_data_arrays] --- Remove data array: vWSS_00210
+[remove_data_arrays] --- Remove data array: timeDeriv_00210
+[remove_data_arrays] --- Remove data array: average_speed_00210
+[remove_data_arrays] --- Remove data array: average_pressure_00210
+[remove_data_arrays] +++ Retain data array: pressure_00220
+[remove_data_arrays] +++ Retain data array: velocity_00220
+[remove_data_arrays] --- Remove data array: vinplane_traction_00220
+[remove_data_arrays] --- Remove data array: vWSS_00220
+[remove_data_arrays] --- Remove data array: timeDeriv_00220
+[remove_data_arrays] --- Remove data array: average_speed_00220
+[remove_data_arrays] --- Remove data array: average_pressure_00220
+[remove_data_arrays] +++ Retain data array: pressure_00230
+[remove_data_arrays] +++ Retain data array: velocity_00230
+[remove_data_arrays] --- Remove data array: vinplane_traction_00230
+[remove_data_arrays] --- Remove data array: vWSS_00230
+[remove_data_arrays] --- Remove data array: timeDeriv_00230
+[remove_data_arrays] --- Remove data array: average_speed_00230
+[remove_data_arrays] --- Remove data array: average_pressure_00230
+[remove_data_arrays] +++ Retain data array: pressure_00240
+[remove_data_arrays] +++ Retain data array: velocity_00240
+[remove_data_arrays] --- Remove data array: vinplane_traction_00240
+[remove_data_arrays] --- Remove data array: vWSS_00240
+[remove_data_arrays] --- Remove data array: timeDeriv_00240
+[remove_data_arrays] --- Remove data array: average_speed_00240
+[remove_data_arrays] --- Remove data array: average_pressure_00240
+[remove_data_arrays] +++ Retain data array: pressure_00250
+[remove_data_arrays] +++ Retain data array: velocity_00250
+[remove_data_arrays] --- Remove data array: vinplane_traction_00250
+[remove_data_arrays] --- Remove data array: vWSS_00250
+[remove_data_arrays] --- Remove data array: timeDeriv_00250
+[remove_data_arrays] --- Remove data array: average_speed_00250
+[remove_data_arrays] --- Remove data array: average_pressure_00250
+[remove_data_arrays] +++ Retain data array: pressure_00260
+[remove_data_arrays] +++ Retain data array: velocity_00260
+[remove_data_arrays] --- Remove data array: vinplane_traction_00260
+[remove_data_arrays] --- Remove data array: vWSS_00260
+[remove_data_arrays] --- Remove data array: timeDeriv_00260
+[remove_data_arrays] --- Remove data array: average_speed_00260
+[remove_data_arrays] --- Remove data array: average_pressure_00260
+[remove_data_arrays] +++ Retain data array: pressure_00270
+[remove_data_arrays] +++ Retain data array: velocity_00270
+[remove_data_arrays] --- Remove data array: vinplane_traction_00270
+[remove_data_arrays] --- Remove data array: vWSS_00270
+[remove_data_arrays] --- Remove data array: timeDeriv_00270
+[remove_data_arrays] --- Remove data array: average_speed_00270
+[remove_data_arrays] --- Remove data array: average_pressure_00270
+[remove_data_arrays] +++ Retain data array: pressure_00280
+[remove_data_arrays] +++ Retain data array: velocity_00280
+[remove_data_arrays] --- Remove data array: vinplane_traction_00280
+[remove_data_arrays] --- Remove data array: vWSS_00280
+[remove_data_arrays] --- Remove data array: timeDeriv_00280
+[remove_data_arrays] --- Remove data array: average_speed_00280
+[remove_data_arrays] --- Remove data array: average_pressure_00280
+[remove_data_arrays] +++ Retain data array: pressure_00290
+[remove_data_arrays] +++ Retain data array: velocity_00290
+[remove_data_arrays] --- Remove data array: vinplane_traction_00290
+[remove_data_arrays] --- Remove data array: vWSS_00290
+[remove_data_arrays] --- Remove data array: timeDeriv_00290
+[remove_data_arrays] --- Remove data array: average_speed_00290
+[remove_data_arrays] --- Remove data array: average_pressure_00290
+[remove_data_arrays] +++ Retain data array: pressure_00300
+[remove_data_arrays] +++ Retain data array: velocity_00300
+[remove_data_arrays] --- Remove data array: vinplane_traction_00300
+[remove_data_arrays] --- Remove data array: vWSS_00300
+[remove_data_arrays] --- Remove data array: timeDeriv_00300
+[remove_data_arrays] --- Remove data array: average_speed_00300
+[remove_data_arrays] --- Remove data array: average_pressure_00300
+[remove_data_arrays] +++ Retain data array: pressure_00310
+[remove_data_arrays] +++ Retain data array: velocity_00310
+[remove_data_arrays] --- Remove data array: vinplane_traction_00310
+[remove_data_arrays] --- Remove data array: vWSS_00310
+[remove_data_arrays] --- Remove data array: timeDeriv_00310
+[remove_data_arrays] --- Remove data array: average_speed_00310
+[remove_data_arrays] --- Remove data array: average_pressure_00310
+[remove_data_arrays] +++ Retain data array: pressure_00320
+[remove_data_arrays] +++ Retain data array: velocity_00320
+[remove_data_arrays] --- Remove data array: vinplane_traction_00320
+[remove_data_arrays] --- Remove data array: vWSS_00320
+[remove_data_arrays] --- Remove data array: timeDeriv_00320
+[remove_data_arrays] --- Remove data array: average_speed_00320
+[remove_data_arrays] --- Remove data array: average_pressure_00320
+[remove_data_arrays] +++ Retain data array: pressure_00330
+[remove_data_arrays] +++ Retain data array: velocity_00330
+[remove_data_arrays] --- Remove data array: vinplane_traction_00330
+[remove_data_arrays] --- Remove data array: vWSS_00330
+[remove_data_arrays] --- Remove data array: timeDeriv_00330
+[remove_data_arrays] --- Remove data array: average_speed_00330
+[remove_data_arrays] --- Remove data array: average_pressure_00330
+[remove_data_arrays] +++ Retain data array: pressure_00340
+[remove_data_arrays] +++ Retain data array: velocity_00340
+[remove_data_arrays] --- Remove data array: vinplane_traction_00340
+[remove_data_arrays] --- Remove data array: vWSS_00340
+[remove_data_arrays] --- Remove data array: timeDeriv_00340
+[remove_data_arrays] --- Remove data array: average_speed_00340
+[remove_data_arrays] --- Remove data array: average_pressure_00340
+[remove_data_arrays] +++ Retain data array: pressure_00350
+[remove_data_arrays] +++ Retain data array: velocity_00350
+[remove_data_arrays] --- Remove data array: vinplane_traction_00350
+[remove_data_arrays] --- Remove data array: vWSS_00350
+[remove_data_arrays] --- Remove data array: timeDeriv_00350
+[remove_data_arrays] --- Remove data array: average_speed_00350
+[remove_data_arrays] --- Remove data array: average_pressure_00350
+[remove_data_arrays] +++ Retain data array: pressure_00360
+[remove_data_arrays] +++ Retain data array: velocity_00360
+[remove_data_arrays] --- Remove data array: vinplane_traction_00360
+[remove_data_arrays] --- Remove data array: vWSS_00360
+[remove_data_arrays] --- Remove data array: timeDeriv_00360
+[remove_data_arrays] --- Remove data array: average_speed_00360
+[remove_data_arrays] --- Remove data array: average_pressure_00360
+[remove_data_arrays] +++ Retain data array: pressure_00370
+[remove_data_arrays] +++ Retain data array: velocity_00370
+[remove_data_arrays] --- Remove data array: vinplane_traction_00370
+[remove_data_arrays] --- Remove data array: vWSS_00370
+[remove_data_arrays] --- Remove data array: timeDeriv_00370
+[remove_data_arrays] --- Remove data array: average_speed_00370
+[remove_data_arrays] --- Remove data array: average_pressure_00370
+[remove_data_arrays] +++ Retain data array: pressure_00380
+[remove_data_arrays] +++ Retain data array: velocity_00380
+[remove_data_arrays] --- Remove data array: vinplane_traction_00380
+[remove_data_arrays] --- Remove data array: vWSS_00380
+[remove_data_arrays] --- Remove data array: timeDeriv_00380
+[remove_data_arrays] --- Remove data array: average_speed_00380
+[remove_data_arrays] --- Remove data array: average_pressure_00380
+[remove_data_arrays] +++ Retain data array: pressure_00390
+[remove_data_arrays] +++ Retain data array: velocity_00390
+[remove_data_arrays] --- Remove data array: vinplane_traction_00390
+[remove_data_arrays] --- Remove data array: vWSS_00390
+[remove_data_arrays] --- Remove data array: timeDeriv_00390
+[remove_data_arrays] --- Remove data array: average_speed_00390
+[remove_data_arrays] --- Remove data array: average_pressure_00390
+[remove_data_arrays] +++ Retain data array: pressure_00400
+[remove_data_arrays] +++ Retain data array: velocity_00400
+[remove_data_arrays] --- Remove data array: vinplane_traction_00400
+[remove_data_arrays] --- Remove data array: vWSS_00400
+[remove_data_arrays] --- Remove data array: timeDeriv_00400
+[remove_data_arrays] --- Remove data array: average_speed_00400
+[remove_data_arrays] --- Remove data array: average_pressure_00400
+[remove_data_arrays] +++ Retain data array: pressure_00410
+[remove_data_arrays] +++ Retain data array: velocity_00410
+[remove_data_arrays] --- Remove data array: vinplane_traction_00410
+[remove_data_arrays] --- Remove data array: vWSS_00410
+[remove_data_arrays] --- Remove data array: timeDeriv_00410
+[remove_data_arrays] --- Remove data array: average_speed_00410
+[remove_data_arrays] --- Remove data array: average_pressure_00410
+[remove_data_arrays] +++ Retain data array: pressure_00420
+[remove_data_arrays] +++ Retain data array: velocity_00420
+[remove_data_arrays] --- Remove data array: vinplane_traction_00420
+[remove_data_arrays] --- Remove data array: vWSS_00420
+[remove_data_arrays] --- Remove data array: timeDeriv_00420
+[remove_data_arrays] --- Remove data array: average_speed_00420
+[remove_data_arrays] --- Remove data array: average_pressure_00420
+[remove_data_arrays] +++ Retain data array: pressure_00430
+[remove_data_arrays] +++ Retain data array: velocity_00430
+[remove_data_arrays] --- Remove data array: vinplane_traction_00430
+[remove_data_arrays] --- Remove data array: vWSS_00430
+[remove_data_arrays] --- Remove data array: timeDeriv_00430
+[remove_data_arrays] --- Remove data array: average_speed_00430
+[remove_data_arrays] --- Remove data array: average_pressure_00430
+[remove_data_arrays] +++ Retain data array: pressure_00440
+[remove_data_arrays] +++ Retain data array: velocity_00440
+[remove_data_arrays] --- Remove data array: vinplane_traction_00440
+[remove_data_arrays] --- Remove data array: vWSS_00440
+[remove_data_arrays] --- Remove data array: timeDeriv_00440
+[remove_data_arrays] --- Remove data array: average_speed_00440
+[remove_data_arrays] --- Remove data array: average_pressure_00440
+[remove_data_arrays] +++ Retain data array: pressure_00450
+[remove_data_arrays] +++ Retain data array: velocity_00450
+[remove_data_arrays] --- Remove data array: vinplane_traction_00450
+[remove_data_arrays] --- Remove data array: vWSS_00450
+[remove_data_arrays] --- Remove data array: timeDeriv_00450
+[remove_data_arrays] --- Remove data array: average_speed_00450
+[remove_data_arrays] --- Remove data array: average_pressure_00450
+[remove_data_arrays] +++ Retain data array: pressure_00460
+[remove_data_arrays] +++ Retain data array: velocity_00460
+[remove_data_arrays] --- Remove data array: vinplane_traction_00460
+[remove_data_arrays] --- Remove data array: vWSS_00460
+[remove_data_arrays] --- Remove data array: timeDeriv_00460
+[remove_data_arrays] --- Remove data array: average_speed_00460
+[remove_data_arrays] --- Remove data array: average_pressure_00460
+[remove_data_arrays] +++ Retain data array: pressure_00470
+[remove_data_arrays] +++ Retain data array: velocity_00470
+[remove_data_arrays] --- Remove data array: vinplane_traction_00470
+[remove_data_arrays] --- Remove data array: vWSS_00470
+[remove_data_arrays] --- Remove data array: timeDeriv_00470
+[remove_data_arrays] --- Remove data array: average_speed_00470
+[remove_data_arrays] --- Remove data array: average_pressure_00470
+[remove_data_arrays] +++ Retain data array: pressure_00480
+[remove_data_arrays] +++ Retain data array: velocity_00480
+[remove_data_arrays] --- Remove data array: vinplane_traction_00480
+[remove_data_arrays] --- Remove data array: vWSS_00480
+[remove_data_arrays] --- Remove data array: timeDeriv_00480
+[remove_data_arrays] --- Remove data array: average_speed_00480
+[remove_data_arrays] --- Remove data array: average_pressure_00480
+[remove_data_arrays] +++ Retain data array: pressure_00490
+[remove_data_arrays] +++ Retain data array: velocity_00490
+[remove_data_arrays] --- Remove data array: vinplane_traction_00490
+[remove_data_arrays] --- Remove data array: vWSS_00490
+[remove_data_arrays] --- Remove data array: timeDeriv_00490
+[remove_data_arrays] --- Remove data array: average_speed_00490
+[remove_data_arrays] --- Remove data array: average_pressure_00490
+[remove_data_arrays] +++ Retain data array: pressure_00500
+[remove_data_arrays] +++ Retain data array: velocity_00500
+[remove_data_arrays] --- Remove data array: vinplane_traction_00500
+[remove_data_arrays] --- Remove data array: vWSS_00500
+[remove_data_arrays] --- Remove data array: timeDeriv_00500
+[remove_data_arrays] --- Remove data array: average_speed_00500
+[remove_data_arrays] --- Remove data array: average_pressure_00500
+[remove_data_arrays] +++ Retain data array: pressure_00510
+[remove_data_arrays] +++ Retain data array: velocity_00510
+[remove_data_arrays] --- Remove data array: vinplane_traction_00510
+[remove_data_arrays] --- Remove data array: vWSS_00510
+[remove_data_arrays] --- Remove data array: timeDeriv_00510
+[remove_data_arrays] --- Remove data array: average_speed_00510
+[remove_data_arrays] --- Remove data array: average_pressure_00510
+[remove_data_arrays] +++ Retain data array: pressure_00520
+[remove_data_arrays] +++ Retain data array: velocity_00520
+[remove_data_arrays] --- Remove data array: vinplane_traction_00520
+[remove_data_arrays] --- Remove data array: vWSS_00520
+[remove_data_arrays] --- Remove data array: timeDeriv_00520
+[remove_data_arrays] --- Remove data array: average_speed_00520
+[remove_data_arrays] --- Remove data array: average_pressure_00520
+[remove_data_arrays] +++ Retain data array: pressure_00530
+[remove_data_arrays] +++ Retain data array: velocity_00530
+[remove_data_arrays] --- Remove data array: vinplane_traction_00530
+[remove_data_arrays] --- Remove data array: vWSS_00530
+[remove_data_arrays] --- Remove data array: timeDeriv_00530
+[remove_data_arrays] --- Remove data array: average_speed_00530
+[remove_data_arrays] --- Remove data array: average_pressure_00530
+[remove_data_arrays] +++ Retain data array: pressure_00540
+[remove_data_arrays] +++ Retain data array: velocity_00540
+[remove_data_arrays] --- Remove data array: vinplane_traction_00540
+[remove_data_arrays] --- Remove data array: vWSS_00540
+[remove_data_arrays] --- Remove data array: timeDeriv_00540
+[remove_data_arrays] --- Remove data array: average_speed_00540
+[remove_data_arrays] --- Remove data array: average_pressure_00540
+[remove_data_arrays] +++ Retain data array: pressure_00550
+[remove_data_arrays] +++ Retain data array: velocity_00550
+[remove_data_arrays] --- Remove data array: vinplane_traction_00550
+[remove_data_arrays] --- Remove data array: vWSS_00550
+[remove_data_arrays] --- Remove data array: timeDeriv_00550
+[remove_data_arrays] --- Remove data array: average_speed_00550
+[remove_data_arrays] --- Remove data array: average_pressure_00550
+[remove_data_arrays] +++ Retain data array: pressure_00560
+[remove_data_arrays] +++ Retain data array: velocity_00560
+[remove_data_arrays] --- Remove data array: vinplane_traction_00560
+[remove_data_arrays] --- Remove data array: vWSS_00560
+[remove_data_arrays] --- Remove data array: timeDeriv_00560
+[remove_data_arrays] --- Remove data array: average_speed_00560
+[remove_data_arrays] --- Remove data array: average_pressure_00560
+[remove_data_arrays] +++ Retain data array: pressure_00570
+[remove_data_arrays] +++ Retain data array: velocity_00570
+[remove_data_arrays] --- Remove data array: vinplane_traction_00570
+[remove_data_arrays] --- Remove data array: vWSS_00570
+[remove_data_arrays] --- Remove data array: timeDeriv_00570
+[remove_data_arrays] --- Remove data array: average_speed_00570
+[remove_data_arrays] --- Remove data array: average_pressure_00570
+[remove_data_arrays] +++ Retain data array: pressure_00580
+[remove_data_arrays] +++ Retain data array: velocity_00580
+[remove_data_arrays] --- Remove data array: vinplane_traction_00580
+[remove_data_arrays] --- Remove data array: vWSS_00580
+[remove_data_arrays] --- Remove data array: timeDeriv_00580
+[remove_data_arrays] --- Remove data array: average_speed_00580
+[remove_data_arrays] --- Remove data array: average_pressure_00580
+[remove_data_arrays] +++ Retain data array: pressure_00590
+[remove_data_arrays] +++ Retain data array: velocity_00590
+[remove_data_arrays] --- Remove data array: vinplane_traction_00590
+[remove_data_arrays] --- Remove data array: vWSS_00590
+[remove_data_arrays] --- Remove data array: timeDeriv_00590
+[remove_data_arrays] --- Remove data array: average_speed_00590
+[remove_data_arrays] --- Remove data array: average_pressure_00590
+[remove_data_arrays] +++ Retain data array: pressure_00600
+[remove_data_arrays] +++ Retain data array: velocity_00600
+[remove_data_arrays] --- Remove data array: vinplane_traction_00600
+[remove_data_arrays] --- Remove data array: vWSS_00600
+[remove_data_arrays] --- Remove data array: timeDeriv_00600
+[remove_data_arrays] --- Remove data array: average_speed_00600
+[remove_data_arrays] --- Remove data array: average_pressure_00600
+[remove_data_arrays] +++ Retain data array: pressure_00610
+[remove_data_arrays] +++ Retain data array: velocity_00610
+[remove_data_arrays] --- Remove data array: vinplane_traction_00610
+[remove_data_arrays] --- Remove data array: vWSS_00610
+[remove_data_arrays] --- Remove data array: timeDeriv_00610
+[remove_data_arrays] --- Remove data array: average_speed_00610
+[remove_data_arrays] --- Remove data array: average_pressure_00610
+[remove_data_arrays] +++ Retain data array: pressure_00620
+[remove_data_arrays] +++ Retain data array: velocity_00620
+[remove_data_arrays] --- Remove data array: vinplane_traction_00620
+[remove_data_arrays] --- Remove data array: vWSS_00620
+[remove_data_arrays] --- Remove data array: timeDeriv_00620
+[remove_data_arrays] --- Remove data array: average_speed_00620
+[remove_data_arrays] --- Remove data array: average_pressure_00620
+[remove_data_arrays] +++ Retain data array: pressure_00630
+[remove_data_arrays] +++ Retain data array: velocity_00630
+[remove_data_arrays] --- Remove data array: vinplane_traction_00630
+[remove_data_arrays] --- Remove data array: vWSS_00630
+[remove_data_arrays] --- Remove data array: timeDeriv_00630
+[remove_data_arrays] --- Remove data array: average_speed_00630
+[remove_data_arrays] --- Remove data array: average_pressure_00630
+[remove_data_arrays] +++ Retain data array: pressure_00640
+[remove_data_arrays] +++ Retain data array: velocity_00640
+[remove_data_arrays] --- Remove data array: vinplane_traction_00640
+[remove_data_arrays] --- Remove data array: vWSS_00640
+[remove_data_arrays] --- Remove data array: timeDeriv_00640
+[remove_data_arrays] --- Remove data array: average_speed_00640
+[remove_data_arrays] --- Remove data array: average_pressure_00640
+[remove_data_arrays] +++ Retain data array: pressure_00650
+[remove_data_arrays] +++ Retain data array: velocity_00650
+[remove_data_arrays] --- Remove data array: vinplane_traction_00650
+[remove_data_arrays] --- Remove data array: vWSS_00650
+[remove_data_arrays] --- Remove data array: timeDeriv_00650
+[remove_data_arrays] --- Remove data array: average_speed_00650
+[remove_data_arrays] --- Remove data array: average_pressure_00650
+[remove_data_arrays] +++ Retain data array: pressure_00660
+[remove_data_arrays] +++ Retain data array: velocity_00660
+[remove_data_arrays] --- Remove data array: vinplane_traction_00660
+[remove_data_arrays] --- Remove data array: vWSS_00660
+[remove_data_arrays] --- Remove data array: timeDeriv_00660
+[remove_data_arrays] --- Remove data array: average_speed_00660
+[remove_data_arrays] --- Remove data array: average_pressure_00660
+[remove_data_arrays] +++ Retain data array: pressure_00670
+[remove_data_arrays] +++ Retain data array: velocity_00670
+[remove_data_arrays] --- Remove data array: vinplane_traction_00670
+[remove_data_arrays] --- Remove data array: vWSS_00670
+[remove_data_arrays] --- Remove data array: timeDeriv_00670
+[remove_data_arrays] --- Remove data array: average_speed_00670
+[remove_data_arrays] --- Remove data array: average_pressure_00670
+[remove_data_arrays] +++ Retain data array: pressure_00680
+[remove_data_arrays] +++ Retain data array: velocity_00680
+[remove_data_arrays] --- Remove data array: vinplane_traction_00680
+[remove_data_arrays] --- Remove data array: vWSS_00680
+[remove_data_arrays] --- Remove data array: timeDeriv_00680
+[remove_data_arrays] --- Remove data array: average_speed_00680
+[remove_data_arrays] --- Remove data array: average_pressure_00680
+[remove_data_arrays] +++ Retain data array: pressure_00690
+[remove_data_arrays] +++ Retain data array: velocity_00690
+[remove_data_arrays] --- Remove data array: vinplane_traction_00690
+[remove_data_arrays] --- Remove data array: vWSS_00690
+[remove_data_arrays] --- Remove data array: timeDeriv_00690
+[remove_data_arrays] --- Remove data array: average_speed_00690
+[remove_data_arrays] --- Remove data array: average_pressure_00690
+[remove_data_arrays] +++ Retain data array: pressure_00700
+[remove_data_arrays] +++ Retain data array: velocity_00700
+[remove_data_arrays] --- Remove data array: vinplane_traction_00700
+[remove_data_arrays] --- Remove data array: vWSS_00700
+[remove_data_arrays] --- Remove data array: timeDeriv_00700
+[remove_data_arrays] --- Remove data array: average_speed_00700
+[remove_data_arrays] --- Remove data array: average_pressure_00700
+[remove_data_arrays] +++ Retain data array: pressure_00710
+[remove_data_arrays] +++ Retain data array: velocity_00710
+[remove_data_arrays] --- Remove data array: vinplane_traction_00710
+[remove_data_arrays] --- Remove data array: vWSS_00710
+[remove_data_arrays] --- Remove data array: timeDeriv_00710
+[remove_data_arrays] --- Remove data array: average_speed_00710
+[remove_data_arrays] --- Remove data array: average_pressure_00710
+[remove_data_arrays] +++ Retain data array: pressure_00720
+[remove_data_arrays] +++ Retain data array: velocity_00720
+[remove_data_arrays] --- Remove data array: vinplane_traction_00720
+[remove_data_arrays] --- Remove data array: vWSS_00720
+[remove_data_arrays] --- Remove data array: timeDeriv_00720
+[remove_data_arrays] --- Remove data array: average_speed_00720
+[remove_data_arrays] --- Remove data array: average_pressure_00720
+[remove_data_arrays] +++ Retain data array: pressure_00730
+[remove_data_arrays] +++ Retain data array: velocity_00730
+[remove_data_arrays] --- Remove data array: vinplane_traction_00730
+[remove_data_arrays] --- Remove data array: vWSS_00730
+[remove_data_arrays] --- Remove data array: timeDeriv_00730
+[remove_data_arrays] --- Remove data array: average_speed_00730
+[remove_data_arrays] --- Remove data array: average_pressure_00730
+[remove_data_arrays] +++ Retain data array: pressure_00740
+[remove_data_arrays] +++ Retain data array: velocity_00740
+[remove_data_arrays] --- Remove data array: vinplane_traction_00740
+[remove_data_arrays] --- Remove data array: vWSS_00740
+[remove_data_arrays] --- Remove data array: timeDeriv_00740
+[remove_data_arrays] --- Remove data array: average_speed_00740
+[remove_data_arrays] --- Remove data array: average_pressure_00740
+[remove_data_arrays] +++ Retain data array: pressure_00750
+[remove_data_arrays] +++ Retain data array: velocity_00750
+[remove_data_arrays] --- Remove data array: vinplane_traction_00750
+[remove_data_arrays] --- Remove data array: vWSS_00750
+[remove_data_arrays] --- Remove data array: timeDeriv_00750
+[remove_data_arrays] --- Remove data array: average_speed_00750
+[remove_data_arrays] --- Remove data array: average_pressure_00750
+[remove_data_arrays] +++ Retain data array: pressure_00760
+[remove_data_arrays] +++ Retain data array: velocity_00760
+[remove_data_arrays] --- Remove data array: vinplane_traction_00760
+[remove_data_arrays] --- Remove data array: vWSS_00760
+[remove_data_arrays] --- Remove data array: timeDeriv_00760
+[remove_data_arrays] --- Remove data array: average_speed_00760
+[remove_data_arrays] --- Remove data array: average_pressure_00760
+[remove_data_arrays] +++ Retain data array: pressure_00770
+[remove_data_arrays] +++ Retain data array: velocity_00770
+[remove_data_arrays] --- Remove data array: vinplane_traction_00770
+[remove_data_arrays] --- Remove data array: vWSS_00770
+[remove_data_arrays] --- Remove data array: timeDeriv_00770
+[remove_data_arrays] --- Remove data array: average_speed_00770
+[remove_data_arrays] --- Remove data array: average_pressure_00770
+[remove_data_arrays] +++ Retain data array: pressure_00780
+[remove_data_arrays] +++ Retain data array: velocity_00780
+[remove_data_arrays] --- Remove data array: vinplane_traction_00780
+[remove_data_arrays] --- Remove data array: vWSS_00780
+[remove_data_arrays] --- Remove data array: timeDeriv_00780
+[remove_data_arrays] --- Remove data array: average_speed_00780
+[remove_data_arrays] --- Remove data array: average_pressure_00780
+[remove_data_arrays] +++ Retain data array: pressure_00790
+[remove_data_arrays] +++ Retain data array: velocity_00790
+[remove_data_arrays] --- Remove data array: vinplane_traction_00790
+[remove_data_arrays] --- Remove data array: vWSS_00790
+[remove_data_arrays] --- Remove data array: timeDeriv_00790
+[remove_data_arrays] --- Remove data array: average_speed_00790
+[remove_data_arrays] --- Remove data array: average_pressure_00790
+[remove_data_arrays] +++ Retain data array: pressure_00800
+[remove_data_arrays] +++ Retain data array: velocity_00800
+[remove_data_arrays] --- Remove data array: vinplane_traction_00800
+[remove_data_arrays] --- Remove data array: vWSS_00800
+[remove_data_arrays] --- Remove data array: timeDeriv_00800
+[remove_data_arrays] --- Remove data array: average_speed_00800
+[remove_data_arrays] --- Remove data array: average_pressure_00800
+[remove_data_arrays] +++ Retain data array: pressure_00810
+[remove_data_arrays] +++ Retain data array: velocity_00810
+[remove_data_arrays] --- Remove data array: vinplane_traction_00810
+[remove_data_arrays] --- Remove data array: vWSS_00810
+[remove_data_arrays] --- Remove data array: timeDeriv_00810
+[remove_data_arrays] --- Remove data array: average_speed_00810
+[remove_data_arrays] --- Remove data array: average_pressure_00810
+[remove_data_arrays] +++ Retain data array: pressure_00820
+[remove_data_arrays] +++ Retain data array: velocity_00820
+[remove_data_arrays] --- Remove data array: vinplane_traction_00820
+[remove_data_arrays] --- Remove data array: vWSS_00820
+[remove_data_arrays] --- Remove data array: timeDeriv_00820
+[remove_data_arrays] --- Remove data array: average_speed_00820
+[remove_data_arrays] --- Remove data array: average_pressure_00820
+[remove_data_arrays] +++ Retain data array: pressure_00830
+[remove_data_arrays] +++ Retain data array: velocity_00830
+[remove_data_arrays] --- Remove data array: vinplane_traction_00830
+[remove_data_arrays] --- Remove data array: vWSS_00830
+[remove_data_arrays] --- Remove data array: timeDeriv_00830
+[remove_data_arrays] --- Remove data array: average_speed_00830
+[remove_data_arrays] --- Remove data array: average_pressure_00830
+[remove_data_arrays] +++ Retain data array: pressure_00840
+[remove_data_arrays] +++ Retain data array: velocity_00840
+[remove_data_arrays] --- Remove data array: vinplane_traction_00840
+[remove_data_arrays] --- Remove data array: vWSS_00840
+[remove_data_arrays] --- Remove data array: timeDeriv_00840
+[remove_data_arrays] --- Remove data array: average_speed_00840
+[remove_data_arrays] --- Remove data array: average_pressure_00840
+[remove_data_arrays] +++ Retain data array: pressure_00850
+[remove_data_arrays] +++ Retain data array: velocity_00850
+[remove_data_arrays] --- Remove data array: vinplane_traction_00850
+[remove_data_arrays] --- Remove data array: vWSS_00850
+[remove_data_arrays] --- Remove data array: timeDeriv_00850
+[remove_data_arrays] --- Remove data array: average_speed_00850
+[remove_data_arrays] --- Remove data array: average_pressure_00850
+[remove_data_arrays] +++ Retain data array: pressure_00860
+[remove_data_arrays] +++ Retain data array: velocity_00860
+[remove_data_arrays] --- Remove data array: vinplane_traction_00860
+[remove_data_arrays] --- Remove data array: vWSS_00860
+[remove_data_arrays] --- Remove data array: timeDeriv_00860
+[remove_data_arrays] --- Remove data array: average_speed_00860
+[remove_data_arrays] --- Remove data array: average_pressure_00860
+[remove_data_arrays] +++ Retain data array: pressure_00870
+[remove_data_arrays] +++ Retain data array: velocity_00870
+[remove_data_arrays] --- Remove data array: vinplane_traction_00870
+[remove_data_arrays] --- Remove data array: vWSS_00870
+[remove_data_arrays] --- Remove data array: timeDeriv_00870
+[remove_data_arrays] --- Remove data array: average_speed_00870
+[remove_data_arrays] --- Remove data array: average_pressure_00870
+[remove_data_arrays] +++ Retain data array: pressure_00880
+[remove_data_arrays] +++ Retain data array: velocity_00880
+[remove_data_arrays] --- Remove data array: vinplane_traction_00880
+[remove_data_arrays] --- Remove data array: vWSS_00880
+[remove_data_arrays] --- Remove data array: timeDeriv_00880
+[remove_data_arrays] --- Remove data array: average_speed_00880
+[remove_data_arrays] --- Remove data array: average_pressure_00880
+[remove_data_arrays] +++ Retain data array: pressure_00890
+[remove_data_arrays] +++ Retain data array: velocity_00890
+[remove_data_arrays] --- Remove data array: vinplane_traction_00890
+[remove_data_arrays] --- Remove data array: vWSS_00890
+[remove_data_arrays] --- Remove data array: timeDeriv_00890
+[remove_data_arrays] --- Remove data array: average_speed_00890
+[remove_data_arrays] --- Remove data array: average_pressure_00890
+[remove_data_arrays] +++ Retain data array: pressure_00900
+[remove_data_arrays] +++ Retain data array: velocity_00900
+[remove_data_arrays] --- Remove data array: vinplane_traction_00900
+[remove_data_arrays] --- Remove data array: vWSS_00900
+[remove_data_arrays] --- Remove data array: timeDeriv_00900
+[remove_data_arrays] --- Remove data array: average_speed_00900
+[remove_data_arrays] --- Remove data array: average_pressure_00900
+[remove_data_arrays] +++ Retain data array: pressure_00910
+[remove_data_arrays] +++ Retain data array: velocity_00910
+[remove_data_arrays] --- Remove data array: vinplane_traction_00910
+[remove_data_arrays] --- Remove data array: vWSS_00910
+[remove_data_arrays] --- Remove data array: timeDeriv_00910
+[remove_data_arrays] --- Remove data array: average_speed_00910
+[remove_data_arrays] --- Remove data array: average_pressure_00910
+[remove_data_arrays] +++ Retain data array: pressure_00920
+[remove_data_arrays] +++ Retain data array: velocity_00920
+[remove_data_arrays] --- Remove data array: vinplane_traction_00920
+[remove_data_arrays] --- Remove data array: vWSS_00920
+[remove_data_arrays] --- Remove data array: timeDeriv_00920
+[remove_data_arrays] --- Remove data array: average_speed_00920
+[remove_data_arrays] --- Remove data array: average_pressure_00920
+[remove_data_arrays] +++ Retain data array: pressure_00930
+[remove_data_arrays] +++ Retain data array: velocity_00930
+[remove_data_arrays] --- Remove data array: vinplane_traction_00930
+[remove_data_arrays] --- Remove data array: vWSS_00930
+[remove_data_arrays] --- Remove data array: timeDeriv_00930
+[remove_data_arrays] --- Remove data array: average_speed_00930
+[remove_data_arrays] --- Remove data array: average_pressure_00930
+[remove_data_arrays] +++ Retain data array: pressure_00940
+[remove_data_arrays] +++ Retain data array: velocity_00940
+[remove_data_arrays] --- Remove data array: vinplane_traction_00940
+[remove_data_arrays] --- Remove data array: vWSS_00940
+[remove_data_arrays] --- Remove data array: timeDeriv_00940
+[remove_data_arrays] --- Remove data array: average_speed_00940
+[remove_data_arrays] --- Remove data array: average_pressure_00940
+[remove_data_arrays] +++ Retain data array: pressure_00950
+[remove_data_arrays] +++ Retain data array: velocity_00950
+[remove_data_arrays] --- Remove data array: vinplane_traction_00950
+[remove_data_arrays] --- Remove data array: vWSS_00950
+[remove_data_arrays] --- Remove data array: timeDeriv_00950
+[remove_data_arrays] --- Remove data array: average_speed_00950
+[remove_data_arrays] --- Remove data array: average_pressure_00950
+[remove_data_arrays] +++ Retain data array: pressure_00960
+[remove_data_arrays] +++ Retain data array: velocity_00960
+[remove_data_arrays] --- Remove data array: vinplane_traction_00960
+[remove_data_arrays] --- Remove data array: vWSS_00960
+[remove_data_arrays] --- Remove data array: timeDeriv_00960
+[remove_data_arrays] --- Remove data array: average_speed_00960
+[remove_data_arrays] --- Remove data array: average_pressure_00960
+[remove_data_arrays] +++ Retain data array: pressure_00970
+[remove_data_arrays] +++ Retain data array: velocity_00970
+[remove_data_arrays] --- Remove data array: vinplane_traction_00970
+[remove_data_arrays] --- Remove data array: vWSS_00970
+[remove_data_arrays] --- Remove data array: timeDeriv_00970
+[remove_data_arrays] --- Remove data array: average_speed_00970
+[remove_data_arrays] --- Remove data array: average_pressure_00970
+[remove_data_arrays] +++ Retain data array: pressure_00980
+[remove_data_arrays] +++ Retain data array: velocity_00980
+[remove_data_arrays] --- Remove data array: vinplane_traction_00980
+[remove_data_arrays] --- Remove data array: vWSS_00980
+[remove_data_arrays] --- Remove data array: timeDeriv_00980
+[remove_data_arrays] --- Remove data array: average_speed_00980
+[remove_data_arrays] --- Remove data array: average_pressure_00980
+[remove_data_arrays] +++ Retain data array: pressure_00990
+[remove_data_arrays] +++ Retain data array: velocity_00990
+[remove_data_arrays] --- Remove data array: vinplane_traction_00990
+[remove_data_arrays] --- Remove data array: vWSS_00990
+[remove_data_arrays] --- Remove data array: timeDeriv_00990
+[remove_data_arrays] --- Remove data array: average_speed_00990
+[remove_data_arrays] --- Remove data array: average_pressure_00990
+[remove_data_arrays] +++ Retain data array: pressure_01000
+[remove_data_arrays] +++ Retain data array: velocity_01000
+[remove_data_arrays] --- Remove data array: vinplane_traction_01000
+[remove_data_arrays] --- Remove data array: vWSS_01000
+[remove_data_arrays] --- Remove data array: timeDeriv_01000
+[remove_data_arrays] --- Remove data array: average_speed_01000
+[remove_data_arrays] --- Remove data array: average_pressure_01000
+[remove_data_arrays] +++ Retain data array: pressure_01010
+[remove_data_arrays] +++ Retain data array: velocity_01010
+[remove_data_arrays] --- Remove data array: vinplane_traction_01010
+[remove_data_arrays] --- Remove data array: vWSS_01010
+[remove_data_arrays] --- Remove data array: timeDeriv_01010
+[remove_data_arrays] --- Remove data array: average_speed_01010
+[remove_data_arrays] --- Remove data array: average_pressure_01010
+[remove_data_arrays] +++ Retain data array: pressure_01020
+[remove_data_arrays] +++ Retain data array: velocity_01020
+[remove_data_arrays] --- Remove data array: vinplane_traction_01020
+[remove_data_arrays] --- Remove data array: vWSS_01020
+[remove_data_arrays] --- Remove data array: timeDeriv_01020
+[remove_data_arrays] --- Remove data array: average_speed_01020
+[remove_data_arrays] --- Remove data array: average_pressure_01020
+[remove_data_arrays] +++ Retain data array: pressure_01030
+[remove_data_arrays] +++ Retain data array: velocity_01030
+[remove_data_arrays] --- Remove data array: vinplane_traction_01030
+[remove_data_arrays] --- Remove data array: vWSS_01030
+[remove_data_arrays] --- Remove data array: timeDeriv_01030
+[remove_data_arrays] --- Remove data array: average_speed_01030
+[remove_data_arrays] --- Remove data array: average_pressure_01030
+[remove_data_arrays] +++ Retain data array: pressure_01040
+[remove_data_arrays] +++ Retain data array: velocity_01040
+[remove_data_arrays] --- Remove data array: vinplane_traction_01040
+[remove_data_arrays] --- Remove data array: vWSS_01040
+[remove_data_arrays] --- Remove data array: timeDeriv_01040
+[remove_data_arrays] --- Remove data array: average_speed_01040
+[remove_data_arrays] --- Remove data array: average_pressure_01040
+[remove_data_arrays] +++ Retain data array: pressure_01050
+[remove_data_arrays] +++ Retain data array: velocity_01050
+[remove_data_arrays] --- Remove data array: vinplane_traction_01050
+[remove_data_arrays] --- Remove data array: vWSS_01050
+[remove_data_arrays] --- Remove data array: timeDeriv_01050
+[remove_data_arrays] --- Remove data array: average_speed_01050
+[remove_data_arrays] --- Remove data array: average_pressure_01050
+[remove_data_arrays] +++ Retain data array: pressure_01060
+[remove_data_arrays] +++ Retain data array: velocity_01060
+[remove_data_arrays] --- Remove data array: vinplane_traction_01060
+[remove_data_arrays] --- Remove data array: vWSS_01060
+[remove_data_arrays] --- Remove data array: timeDeriv_01060
+[remove_data_arrays] --- Remove data array: average_speed_01060
+[remove_data_arrays] --- Remove data array: average_pressure_01060
+[remove_data_arrays] +++ Retain data array: pressure_01070
+[remove_data_arrays] +++ Retain data array: velocity_01070
+[remove_data_arrays] --- Remove data array: vinplane_traction_01070
+[remove_data_arrays] --- Remove data array: vWSS_01070
+[remove_data_arrays] --- Remove data array: timeDeriv_01070
+[remove_data_arrays] --- Remove data array: average_speed_01070
+[remove_data_arrays] --- Remove data array: average_pressure_01070
+[remove_data_arrays] +++ Retain data array: pressure_01080
+[remove_data_arrays] +++ Retain data array: velocity_01080
+[remove_data_arrays] --- Remove data array: vinplane_traction_01080
+[remove_data_arrays] --- Remove data array: vWSS_01080
+[remove_data_arrays] --- Remove data array: timeDeriv_01080
+[remove_data_arrays] --- Remove data array: average_speed_01080
+[remove_data_arrays] --- Remove data array: average_pressure_01080
+[remove_data_arrays] +++ Retain data array: pressure_01090
+[remove_data_arrays] +++ Retain data array: velocity_01090
+[remove_data_arrays] --- Remove data array: vinplane_traction_01090
+[remove_data_arrays] --- Remove data array: vWSS_01090
+[remove_data_arrays] --- Remove data array: timeDeriv_01090
+[remove_data_arrays] --- Remove data array: average_speed_01090
+[remove_data_arrays] --- Remove data array: average_pressure_01090
+[remove_data_arrays] +++ Retain data array: pressure_01100
+[remove_data_arrays] +++ Retain data array: velocity_01100
+[remove_data_arrays] --- Remove data array: vinplane_traction_01100
+[remove_data_arrays] --- Remove data array: vWSS_01100
+[remove_data_arrays] --- Remove data array: timeDeriv_01100
+[remove_data_arrays] --- Remove data array: average_speed_01100
+[remove_data_arrays] --- Remove data array: average_pressure_01100
+[remove_data_arrays] +++ Retain data array: pressure_01110
+[remove_data_arrays] +++ Retain data array: velocity_01110
+[remove_data_arrays] --- Remove data array: vinplane_traction_01110
+[remove_data_arrays] --- Remove data array: vWSS_01110
+[remove_data_arrays] --- Remove data array: timeDeriv_01110
+[remove_data_arrays] --- Remove data array: average_speed_01110
+[remove_data_arrays] --- Remove data array: average_pressure_01110
+[remove_data_arrays] +++ Retain data array: pressure_01120
+[remove_data_arrays] +++ Retain data array: velocity_01120
+[remove_data_arrays] --- Remove data array: vinplane_traction_01120
+[remove_data_arrays] --- Remove data array: vWSS_01120
+[remove_data_arrays] --- Remove data array: timeDeriv_01120
+[remove_data_arrays] --- Remove data array: average_speed_01120
+[remove_data_arrays] --- Remove data array: average_pressure_01120
+[remove_data_arrays] +++ Retain data array: pressure_01130
+[remove_data_arrays] +++ Retain data array: velocity_01130
+[remove_data_arrays] --- Remove data array: vinplane_traction_01130
+[remove_data_arrays] --- Remove data array: vWSS_01130
+[remove_data_arrays] --- Remove data array: timeDeriv_01130
+[remove_data_arrays] --- Remove data array: average_speed_01130
+[remove_data_arrays] --- Remove data array: average_pressure_01130
+[remove_data_arrays] +++ Retain data array: pressure_01140
+[remove_data_arrays] +++ Retain data array: velocity_01140
+[remove_data_arrays] --- Remove data array: vinplane_traction_01140
+[remove_data_arrays] --- Remove data array: vWSS_01140
+[remove_data_arrays] --- Remove data array: timeDeriv_01140
+[remove_data_arrays] --- Remove data array: average_speed_01140
+[remove_data_arrays] --- Remove data array: average_pressure_01140
+[remove_data_arrays] +++ Retain data array: pressure_01150
+[remove_data_arrays] +++ Retain data array: velocity_01150
+[remove_data_arrays] --- Remove data array: vinplane_traction_01150
+[remove_data_arrays] --- Remove data array: vWSS_01150
+[remove_data_arrays] --- Remove data array: timeDeriv_01150
+[remove_data_arrays] --- Remove data array: average_speed_01150
+[remove_data_arrays] --- Remove data array: average_pressure_01150
+[remove_data_arrays] +++ Retain data array: pressure_01160
+[remove_data_arrays] +++ Retain data array: velocity_01160
+[remove_data_arrays] --- Remove data array: vinplane_traction_01160
+[remove_data_arrays] --- Remove data array: vWSS_01160
+[remove_data_arrays] --- Remove data array: timeDeriv_01160
+[remove_data_arrays] --- Remove data array: average_speed_01160
+[remove_data_arrays] --- Remove data array: average_pressure_01160
+[remove_data_arrays] +++ Retain data array: pressure_01170
+[remove_data_arrays] +++ Retain data array: velocity_01170
+[remove_data_arrays] --- Remove data array: vinplane_traction_01170
+[remove_data_arrays] --- Remove data array: vWSS_01170
+[remove_data_arrays] --- Remove data array: timeDeriv_01170
+[remove_data_arrays] --- Remove data array: average_speed_01170
+[remove_data_arrays] --- Remove data array: average_pressure_01170
+[remove_data_arrays] +++ Retain data array: pressure_01180
+[remove_data_arrays] +++ Retain data array: velocity_01180
+[remove_data_arrays] --- Remove data array: vinplane_traction_01180
+[remove_data_arrays] --- Remove data array: vWSS_01180
+[remove_data_arrays] --- Remove data array: timeDeriv_01180
+[remove_data_arrays] --- Remove data array: average_speed_01180
+[remove_data_arrays] --- Remove data array: average_pressure_01180
+[remove_data_arrays] +++ Retain data array: pressure_01190
+[remove_data_arrays] +++ Retain data array: velocity_01190
+[remove_data_arrays] --- Remove data array: vinplane_traction_01190
+[remove_data_arrays] --- Remove data array: vWSS_01190
+[remove_data_arrays] --- Remove data array: timeDeriv_01190
+[remove_data_arrays] --- Remove data array: average_speed_01190
+[remove_data_arrays] --- Remove data array: average_pressure_01190
+[remove_data_arrays] +++ Retain data array: pressure_01200
+[remove_data_arrays] +++ Retain data array: velocity_01200
+[remove_data_arrays] --- Remove data array: vinplane_traction_01200
+[remove_data_arrays] --- Remove data array: vWSS_01200
+[remove_data_arrays] --- Remove data array: timeDeriv_01200
+[remove_data_arrays] --- Remove data array: average_speed_01200
+[remove_data_arrays] --- Remove data array: average_pressure_01200
+[read_mesh] Done. 
+[read_centerlines] Read centerlines: /home/users/pfaller/work/osmsc/data_generated/centerlines/0111_0001.vtp
+[read_centerlines] Number of points: 4178
+[create_cell_locator] 
+[create_cell_locator] cell_locator_ 0x2c33ebb0
+[read_centerlines] normal_data_: 0x2c318080
+[read_centerlines] Done. 
+[extract_all_slices] 
+[extract_all_slices] ========== Mesh::extract_all_slices ========== 
+[extract_all_slices] Number of centerline points: 4178
+i/num_points = 0/4178
+i/num_points = 1/4178
+i/num_points = 2/4178
+i/num_points = 3/4178
+i/num_points = 4/4178
+i/num_points = 5/4178
+i/num_points = 6/4178
+i/num_points = 7/4178
+i/num_points = 8/4178
+i/num_points = 9/4178
+i/num_points = 10/4178
+i/num_points = 11/4178
+i/num_points = 12/4178
+i/num_points = 13/4178
+i/num_points = 14/4178
+i/num_points = 15/4178
+i/num_points = 16/4178
+i/num_points = 17/4178
+i/num_points = 18/4178
+i/num_points = 19/4178
+i/num_points = 20/4178
+i/num_points = 21/4178
+i/num_points = 22/4178
+i/num_points = 23/4178
+i/num_points = 24/4178
+i/num_points = 25/4178
+i/num_points = 26/4178
+i/num_points = 27/4178
+i/num_points = 28/4178
+i/num_points = 29/4178
+i/num_points = 30/4178
+i/num_points = 31/4178
+i/num_points = 32/4178
+i/num_points = 33/4178
+i/num_points = 34/4178
+i/num_points = 35/4178
+i/num_points = 36/4178
+i/num_points = 37/4178
+i/num_points = 38/4178
+i/num_points = 39/4178
+i/num_points = 40/4178
+i/num_points = 41/4178
+i/num_points = 42/4178
+i/num_points = 43/4178
+i/num_points = 44/4178
+i/num_points = 45/4178
+i/num_points = 46/4178
+i/num_points = 47/4178
+i/num_points = 48/4178
+i/num_points = 49/4178
+i/num_points = 50/4178
+i/num_points = 51/4178
+i/num_points = 52/4178
+i/num_points = 53/4178
+i/num_points = 54/4178
+i/num_points = 55/4178
+i/num_points = 56/4178
+i/num_points = 57/4178
+i/num_points = 58/4178
+i/num_points = 59/4178
+i/num_points = 60/4178
+i/num_points = 61/4178
+i/num_points = 62/4178
+i/num_points = 63/4178
+i/num_points = 64/4178
+i/num_points = 65/4178
+i/num_points = 66/4178
+i/num_points = 67/4178
+i/num_points = 68/4178
+i/num_points = 69/4178
+i/num_points = 70/4178
+i/num_points = 71/4178
+i/num_points = 72/4178
+i/num_points = 73/4178
+i/num_points = 74/4178
+i/num_points = 75/4178
+i/num_points = 76/4178
+i/num_points = 77/4178
+i/num_points = 78/4178
+i/num_points = 79/4178
+i/num_points = 80/4178
+i/num_points = 81/4178
+i/num_points = 82/4178
+i/num_points = 83/4178
+i/num_points = 84/4178
+i/num_points = 85/4178
+i/num_points = 86/4178
+i/num_points = 87/4178
+i/num_points = 88/4178
+i/num_points = 89/4178
+i/num_points = 90/4178
+i/num_points = 91/4178
+i/num_points = 92/4178
+i/num_points = 93/4178
+i/num_points = 94/4178
+i/num_points = 95/4178
+i/num_points = 96/4178
+i/num_points = 97/4178
+i/num_points = 98/4178
+i/num_points = 99/4178
+i/num_points = 100/4178
+i/num_points = 101/4178
+i/num_points = 102/4178
+i/num_points = 103/4178
+i/num_points = 104/4178
