@@ -171,10 +171,8 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
     vtkSmartPointer<vtkPolyData> slice = vtkSmartPointer<vtkPolyData>::New();
     slice->DeepCopy(contour->GetOutput());
     // Trim the slice using the incribed sphere radius.
-    std::cout << 1 << std::endl << std::flush;
     if (trim_slice_using_incribed_sphere_) {
       slice = trim_slice(slice.GetPointer(), position, radius);
-      std::cout << 2 << std::endl << std::flush;
     // Find the slice geometry center closest to the selected point.
     } else {
       slice = find_best_slice(position, slice.GetPointer());
