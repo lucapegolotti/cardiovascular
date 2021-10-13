@@ -27,10 +27,10 @@ class Mesh {
                             bool compute_average_fields = false,
                             bool update_graphics = true);
     void extract_slice(double pos[3], double inscribedRadius, double normal[3]);
-    vtkPolyData* find_best_slice(double position[3], vtkPolyData* isosurface);
+    vtkSmartPointer<vtkPolyData> find_best_slice(double position[3], vtkPolyData* isosurface);
     void read_mesh(const std::string& fileName);
     void remove_data_arrays(const std::set<std::string>& slice_data_names);
-    vtkPolyData* trim_slice(vtkPolyData* slice, double position[3], double radius);
+    vtkSmartPointer<vtkPolyData> trim_slice(vtkPolyData* slice, double position[3], double radius);
     void write_vtp(vtkPolyData* slice, std::string filename);
     void write_centerlines_and_fields(vtkPolyData* slice, std::string filename);
     double integrate_on_slice(vtkPolyData* slice, vtkIdType numcells,
@@ -56,6 +56,8 @@ class Mesh {
 
     // flowrate over each slice (key: name in the original vtu)
     std::map<std::string,vtkSmartPointer<vtkDoubleArray>> flowrates_;
+
+    vtkSmartPointer<vtkDoubleArray> areas_;
 };
 
 #endif
