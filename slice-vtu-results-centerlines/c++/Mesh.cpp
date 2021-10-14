@@ -249,7 +249,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
       flowrates_[name]->SetNumberOfComponents(1);
       flowrates_[name]->SetNumberOfTuples(num_points);
     }
-    flowrates_[name]->SetValue(i, integral/area);
+    flowrates_[name]->SetValue(i, integral);
   }
   if (std::strcmp(name.substr(0, upos).c_str(),"pressure") == 0) {
     double integral = integrate_on_slice(slice, numcells, area_cells,
