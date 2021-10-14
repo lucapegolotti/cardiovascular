@@ -232,7 +232,6 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
       std::vector<double> area_cells;
       double area = compute_area_slice(slice, area_cells);
       areas_->SetValue(i, area);
-      std::cout << area << std::endl << std::flush;
       for (int ipoint = 0; ipoint < num_point_arrays; ipoint++) {
         int type = slice->GetPointData()->GetArray(ipoint)->GetDataType();
         auto name = std::string(slice->GetPointData()->GetArrayName(ipoint));
@@ -274,7 +273,6 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
         }
       }
     }
-
     if (update_graphics) {
       auto geom = graphics_->create_geometry(slice);
       geom->GetProperty()->SetColor(0.8, 0.0, 0.0);
