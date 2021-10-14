@@ -34,8 +34,9 @@ class Mesh {
     void write_vtp(vtkPolyData* slice, std::string filename);
     void write_centerlines_and_fields(vtkPolyData* slice, std::string filename);
     double integrate_on_slice(vtkPolyData* slice, vtkIdType numcells,
-                              double area_cells[],
+                              std::vector<double> area_cells,
                               std::function<double(vtkIdType)> fun);
+    double compute_area_slice(vtkPolyData* slice, std::vector<double>& area_cells);
     Graphics* graphics_;
 
     std::string mesh_file_name_;
