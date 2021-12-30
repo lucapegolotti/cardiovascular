@@ -45,11 +45,14 @@ void Mesh::read_mesh(const std::string& file_name)
   mesh_file_name_ = file_name;
   std::cout << "[read_mesh] Read mesh: " << file_name << std::endl;
   unstructured_mesh_ = vtkSmartPointer<vtkUnstructuredGrid>::New();
-
+  std::cout << 1 << std::endl << std::flush;
   auto reader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
+  std::cout << 2 << std::endl << std::flush;
   reader->SetFileName(file_name.c_str());
+  std::cout << 3 << std::endl << std::flush;
   reader->Update();
-  unstructured_mesh_->DeepCopy(reader->GetOutput());
+  std::cout << 4 << std::endl << std::flush;
+  unstructured_mesh_= reader->GetOutput();
   std::cout << "[read_mesh] Number of elements: " << unstructured_mesh_->GetNumberOfCells() << std::endl;
 
   // Remove data arrays we don't want to generate slice data for.
@@ -194,7 +197,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
 
   // Extract slices.
   //
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < num_points; i++) {
     std::cout << "i/num_points = " << i << "/" << num_points << std::endl << std::flush;
 
     double position[3];

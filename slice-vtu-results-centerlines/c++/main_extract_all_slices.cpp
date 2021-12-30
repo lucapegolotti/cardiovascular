@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
   centerlines->mesh_ = mesh;
   
   mesh->extract_all_slices(centerlines->polydata_.GetPointer(), true, false);
-  mesh->write_centerlines_and_fields(centerlines->polydata_.GetPointer(), "output_no_sphere_.vtp");
+  mesh->write_centerlines_and_fields(centerlines->polydata_.GetPointer(), "output_no_sphere.vtp");
   delete mesh;
   delete centerlines;
 }
