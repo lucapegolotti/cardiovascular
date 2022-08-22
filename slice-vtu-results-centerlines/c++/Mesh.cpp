@@ -45,13 +45,9 @@ void Mesh::read_mesh(const std::string& file_name)
   mesh_file_name_ = file_name;
   std::cout << "[read_mesh] Read mesh: " << file_name << std::endl;
   unstructured_mesh_ = vtkSmartPointer<vtkUnstructuredGrid>::New();
-  std::cout << 1 << std::endl << std::flush;
   auto reader = vtkSmartPointer<vtkXMLUnstructuredGridReader>::New();
-  std::cout << 2 << std::endl << std::flush;
   reader->SetFileName(file_name.c_str());
-  std::cout << 3 << std::endl << std::flush;
   reader->Update();
-  std::cout << 4 << std::endl << std::flush;
   unstructured_mesh_= reader->GetOutput();
   std::cout << "[read_mesh] Number of elements: " << unstructured_mesh_->GetNumberOfCells() << std::endl;
 
@@ -197,9 +193,8 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
 
   // Extract slices.
   //
-  for (int i = 0; i < num_points; i++) {
+  for (int i = 1278; i < num_points; i++) {
     std::cout << "i/num_points = " << i << "/" << num_points << std::endl << std::flush;
-
     double position[3];
     double normal[3];
     points->GetPoint(i, position);
@@ -207,7 +202,6 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
     double radius = radius_data->GetValue(i);
     // Compute the distance of each mesh node to the plane.
     compute_plane_dist(position, normal);
-
     // Extract the slice.
     auto contour = vtkSmartPointer<vtkContourGrid>::New();
     contour->SetInputData(unstructured_mesh_);
@@ -224,32 +218,37 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
       slice = find_best_slice(position, slice.GetPointer());
     }
     if (compute_average_fields) {
-      vtkIdType num_point_arrays = slice->GetPointData()->GetNumberOfArrays();
-      int num_points_slice = slice->GetNumberOfPoints();
-      auto polys = slice->GetPolys();
-      int numcells = polys->GetNumberOfCells();
-      auto points_slice = slice->GetPoints();
-      // std::stringstream file_name;
-      // file_name << "slice-1.vtp";
-      // write_vtp(slice, file_name.str());
-      std::vector<double> area_cells;
-      double area = compute_area_slice(slice, area_cells);
-      areas_->SetValue(i, area);
-      for (int ipoint = 0; ipoint < num_point_arrays; ipoint++) {
-        int type = slice->GetPointData()->GetArray(ipoint)->GetDataType();
-        auto name = std::string(slice->GetPointData()->GetArrayName(ipoint));
-        int upos = name.find('_');
-        if (std::strcmp(name.substr(0, upos).c_str(),"velocity") == 0) {
-          double flux[num_points_slice];
-          for (int j = 0; j < num_points_slice; j++) {
-            double* vel = slice->GetPointData()->GetArray(ipoint)->GetTuple3(j);
-            double curflux = 0;
-            for (int k = 0; k < 3; k++) {
-              curflux += vel[k] * normal[k];
+      if (slice == nullptr) {
+        std::cout << "slice is null!" << std::endl;
+	exit(1);
+      }
+      else {
+        vtkIdType num_point_arrays = slice->GetPointData()->GetNumberOfArrays();
+        int num_points_slice = slice->GetNumberOfPoints();
+        auto polys = slice->GetPolys();
+        int numcells = polys->GetNumberOfCells();
+        auto points_slice = slice->GetPoints();
+        // std::stringstream file_name;
+        // file_name << "slice-1.vtp";
+        // write_vtp(slice, file_name.str());
+        std::vector<double> area_cells;
+        double area = compute_area_slice(slice, area_cells);
+        areas_->SetValue(i, area);
+        for (int ipoint = 0; ipoint < num_point_arrays; ipoint++) {
+          int type = slice->GetPointData()->GetArray(ipoint)->GetDataType();
+          auto name = std::string(slice->GetPointData()->GetArrayName(ipoint));
+          int upos = name.find('_');
+          if (std::strcmp(name.substr(0, upos).c_str(),"velocity") == 0) {
+            double flux[num_points_slice];
+            for (int j = 0; j < num_points_slice; j++) {
+              double* vel = slice->GetPointData()->GetArray(ipoint)->GetTuple3(j);
+              double curflux = 0;
+              for (int k = 0; k < 3; k++) {
+                curflux += vel[k] * normal[k];
+              }
+              flux[j] = curflux;
             }
-            flux[j] = curflux;
-          }
-          double integral = integrate_on_slice(slice, numcells, area_cells,
+            double integral = integrate_on_slice(slice, numcells, area_cells,
                   [&](vtkIdType index) -> double {
                     return flux[index];
                   });
@@ -261,18 +260,19 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
           }
           flowrates_[name]->SetValue(i, integral);
         }
-        if (std::strcmp(name.substr(0, upos).c_str(),"pressure") == 0) {
-          double integral = integrate_on_slice(slice, numcells, area_cells,
+          if (std::strcmp(name.substr(0, upos).c_str(),"pressure") == 0) {
+            double integral = integrate_on_slice(slice, numcells, area_cells,
                   [&](vtkIdType index) -> double {
                     return slice->GetPointData()->GetArray(ipoint)->GetTuple1(index);
                   });
-          if (avg_pressures_.find(name) == avg_pressures_.end()) {
-            avg_pressures_[name] = vtkSmartPointer<vtkDoubleArray>::New();
-            avg_pressures_[name]->SetName(name.c_str());
-            avg_pressures_[name]->SetNumberOfComponents(1);
-            avg_pressures_[name]->SetNumberOfTuples(num_points);
+            if (avg_pressures_.find(name) == avg_pressures_.end()) {
+              avg_pressures_[name] = vtkSmartPointer<vtkDoubleArray>::New();
+              avg_pressures_[name]->SetName(name.c_str());
+              avg_pressures_[name]->SetNumberOfComponents(1);
+              avg_pressures_[name]->SetNumberOfTuples(num_points);
+            }
+            avg_pressures_[name]->SetValue(i, integral/area);
           }
-          avg_pressures_[name]->SetValue(i, integral/area);
         }
       }
     }
@@ -499,6 +499,7 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
   int rid = 0;
   double center[3] = {0.0, 0.0, 0.0};
   vtkSmartPointer<vtkPolyData> min_comp;
+
   while (true) {
     conn_filter->AddSpecifiedRegion(rid);
     conn_filter->Update();
@@ -513,7 +514,6 @@ Mesh::find_best_slice(double position[3], vtkPolyData* slice)
     clean_filter->SetInputData(component);
     clean_filter->Update();
     component->DeepCopy(clean_filter->GetOutput());
-
     auto comp_points = component->GetPoints();
     int num_comp_points = component->GetNumberOfPoints();
     int num_comp_cells = component->GetNumberOfCells();

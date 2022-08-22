@@ -20,8 +20,8 @@
 //
 int main(int argc, char* argv[])
 {
-  if (argc < 2) {
-    std::cout << "Usage: " << argv[0] << " Results file name (.vtu)" << "  centerlines file name (.vtp) " << std::endl;
+  if (argc < 3) {
+    std::cout << "Usage: " << argv[0] << " Results file name (.vtu)" << "  centerlines file name (.vtp) " << " output name " <<  std::endl;
     return EXIT_FAILURE;
   }
 
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
   centerlines->mesh_ = mesh;
   
   mesh->extract_all_slices(centerlines->polydata_.GetPointer(), true, false);
-  mesh->write_centerlines_and_fields(centerlines->polydata_.GetPointer(), "output_no_sphere.vtp");
+  mesh->write_centerlines_and_fields(centerlines->polydata_.GetPointer(), argv[3]);
   delete mesh;
   delete centerlines;
 }

@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 PROJECT(slice-results)
 
-find_package(VTK REQUIRED PATHS /home/users/lpego/VTK-install/lib64/cmake/vtk-9.0/)
+find_package(VTK REQUIRED PATHS /home/lpegolotti/VTK-install/lib64/cmake/vtk-9.1/)
 include(${VTK_USE_FILE})
 
 add_executable(slice-results
