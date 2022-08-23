@@ -193,23 +193,63 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
 
   // Extract slices.
   //
-  for (int i = 1278; i < num_points; i++) {
+  for (int i = 0; i < num_points; i++) {
     std::cout << "i/num_points = " << i << "/" << num_points << std::endl << std::flush;
+    float weight = 0.1;
+
+    double position1[3];
+    double normal1[3];
+    points->GetPoint(i, position1);
+    normal_data->GetTuple(i, normal1);
+    double radius1 = radius_data->GetValue(i);
+        
+    double position2[3];
+    double normal2[3];
+    double radius2;
+    if (i != num_points - 1) {
+      points->GetPoint(i + 1, position2);
+      normal_data->GetTuple(i + 1, normal2);
+      radius2 = radius_data->GetValue(i + 1);
+    }
+    else {
+      points->GetPoint(i - 1, position2);
+      normal_data->GetTuple(i - 1, normal2);
+      radius2 = radius_data->GetValue(i - 1);
+    }
+    vtkSmartPointer<vtkPolyData> slice;   
     double position[3];
     double normal[3];
-    points->GetPoint(i, position);
-    normal_data->GetTuple(i, normal);
-    double radius = radius_data->GetValue(i);
-    // Compute the distance of each mesh node to the plane.
-    compute_plane_dist(position, normal);
-    // Extract the slice.
-    auto contour = vtkSmartPointer<vtkContourGrid>::New();
-    contour->SetInputData(unstructured_mesh_);
-    contour->SetValue(0, 0.0);
-    contour->ComputeNormalsOff();
-    contour->Update();
-    vtkSmartPointer<vtkPolyData> slice = vtkSmartPointer<vtkPolyData>::New();
-    slice->DeepCopy(contour->GetOutput());
+    double radius;
+    while (true) {
+      double nnorm = 0.0;
+      for (int j = 0; j < 3; j++) {
+        position[j] = position1[j] * (1 - weight) + position2[j] * weight;
+        normal[j] = normal1[j] * (1 - weight) + normal2[j] * weight;
+        nnorm += normal[j] * normal[j];
+      }
+      for (int j = 0; j < 3; j++) {
+        normal[j] = normal[j] / nnorm;
+      }
+      radius = radius1 * (1 - weight) + radius2 * weight;
+      // Compute the distance of each mesh node to the plane. 
+      compute_plane_dist(position, normal);
+      // Extract the slice.
+      auto contour = vtkSmartPointer<vtkContourGrid>::New();
+      contour->SetInputData(unstructured_mesh_);
+      contour->SetValue(0, 0.0);
+      contour->ComputeNormalsOff();
+      contour->Update();
+      slice = vtkSmartPointer<vtkPolyData>::New();
+      slice->DeepCopy(contour->GetOutput());
+      if (slice->GetNumberOfPoints()) {
+        break;
+      }
+      weight += 0.1;
+      if (weight == 0.6) {
+        std::cout << "interpolation failed!" << std::endl;
+        exit(1);
+      }
+    }
     // Trim the slice using the incribed sphere radius.
     if (trim_slice_using_incribed_sphere_) {
       slice = trim_slice(slice.GetPointer(), position, radius);
@@ -220,7 +260,7 @@ void Mesh::extract_all_slices(vtkPolyData* centerlines, bool compute_average_fie
     if (compute_average_fields) {
       if (slice == nullptr) {
         std::cout << "slice is null!" << std::endl;
-	exit(1);
+	    exit(1);
       }
       else {
         vtkIdType num_point_arrays = slice->GetPointData()->GetNumberOfArrays();
