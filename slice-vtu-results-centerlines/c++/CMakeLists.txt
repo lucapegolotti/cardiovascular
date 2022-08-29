@@ -24,6 +24,6 @@ add_executable(extract-all-slices
     Slice.h Slice.cpp
 )
 
-set(CMAKE_CXX_FLAGS "-O3")
+set(CMAKE_CXX_FLAGS "-O3 -fopenmp")
 target_link_libraries(slice-results ${VTK_LIBRARIES})
 target_link_libraries(extract-all-slices ${VTK_LIBRARIES})
